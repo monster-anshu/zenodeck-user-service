@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", // Set ECMAScript target version
+    "module": "CommonJS", // Use CommonJS for Node.js module system
+    "strict": true, // Enable all strict type checking options
+    "esModuleInterop": true, // Enable compatibility for CommonJS and ES modules
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true, // Ensure file name casing consistency
+    "moduleResolution": "node", // Resolve modules as Node.js does
+    "noImplicitAny": true, // Warn on using the `any` type
+    "resolveJsonModule": true, // Allow importing .json files
+    "sourceMap": true, // Enable source maps for debugging
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*", "serverless.ts"], // Include all TypeScript files in the 'src' folder
+  "exclude": ["node_modules", "dist"], // Exclude 'node_modules' and 'dist' from compilation
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
+}
