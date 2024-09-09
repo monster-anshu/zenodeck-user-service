@@ -2,7 +2,8 @@
   "name": "user-service",
   "scripts": {
     "db": "tsx --env-file=.env src/mongo/index.ts",
-    "deploy": "serverless deploy --stage dev"
+    "deploy": "serverless deploy --stage dev",
+    "dev": "serverless dev --stage dev"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.145",

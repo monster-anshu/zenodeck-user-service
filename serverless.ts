@@ -18,7 +18,7 @@ const serverlessConfiguration: Serverless = {
     logRetentionInDays: {
       dev: 1,
     },
-    apiPrefix: "/api/v1",
+    apiPrefix: "/api/v1/user",
   },
   provider: {
     name: "aws",
