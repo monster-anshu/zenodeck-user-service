@@ -2,8 +2,6 @@ import { Serverless } from "serverless/aws";
 import * as functions from "./src/functions";
 
 const serverlessConfiguration: Serverless = {
-  org: "monsteranshu",
-  app: "user-service",
   service: "user-service",
 
   frameworkVersion: "4",
@@ -25,7 +23,7 @@ const serverlessConfiguration: Serverless = {
     runtime: "nodejs20.x",
     memorySize: 128,
     timeout: 30,
-    region: "ap-south-1",
+    region: "us-east-1",
     stage: "${env:STAGE}",
     deploymentBucket: {
       name: "${env:SERVERLESS_DEPLOYMENT_BUCKET}",
@@ -42,6 +40,9 @@ const serverlessConfiguration: Serverless = {
       STAGE: "${env:STAGE}",
       TZ: "Asia/Kolkata",
     },
+    apiGateway: {
+      // disableDefaultEndpoint: true,
+    } as never,
   },
   package: { individually: true },
   functions: functions,

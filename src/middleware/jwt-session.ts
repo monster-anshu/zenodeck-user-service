@@ -21,7 +21,7 @@ export const jwtSessionMiddleware = () => {
   const sessionMiddlewareBefore = async (request: middy.Request) => {
     const headers = request.event.headers;
     const jwtValue = jwtSessionCookie.getcookie(
-      headers.Cookie || headers.cookie,
+      headers.Cookie || headers.cookie
     );
     let session;
 
@@ -31,7 +31,7 @@ export const jwtSessionMiddleware = () => {
 
     request.event.oldSession = session || {};
     request.event.session = JSON.parse(
-      JSON.stringify(request.event.oldSession),
+      JSON.stringify(request.event.oldSession)
     );
   };
 
@@ -39,7 +39,7 @@ export const jwtSessionMiddleware = () => {
     normalizeHttpResponse(request);
     const cookieDomains = [BASE_DOMAIN.replace(/^https?:\/\/(www\.)?/, "")];
 
-    if (!["prod"].includes(STAGE)) {
+    if (["dev"].includes(STAGE)) {
       cookieDomains.push("localhost");
     }
 
@@ -74,7 +74,7 @@ export const jwtSessionMiddleware = () => {
             {
               expires: getDateAfterMinutes(90 * 24 * 60),
               domain: cookieDomain,
-            },
+            }
           );
           request.response.multiValueHeaders["Set-Cookie"] = header;
         });
