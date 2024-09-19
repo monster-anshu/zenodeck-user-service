@@ -27,7 +27,7 @@ export class CompanyService {
         acc[curr.companyId.toString()] = curr.products;
         return acc;
       },
-      {} as Record<string, string[]>,
+      {} as Record<string, string[]>
     );
 
     const companies = await CompanyModel.find(
@@ -42,7 +42,7 @@ export class CompanyService {
         companyName: 1,
         primaryUserId: 1,
         companyLogo: 1,
-      },
+      }
     ).lean();
 
     return companies.map((cur) => {
@@ -55,5 +55,37 @@ export class CompanyService {
           []) as Product[],
       };
     });
+  }
+
+  static async addProductPermissionToUser({
+    companyId,
+    products,
+    role,
+    userId,
+  }: {
+    userId: string;
+    companyId: string;
+    products: Product[];
+    role?: string;
+  }) {
+    await CompanyUserModel.findOneAndUpdate(
+      {
+        companyId: companyId,
+        userId: userId,
+      },
+      {
+        $addToSet: {
+          products: { $each: products },
+        },
+        $set: {
+          status: "ACTIVE",
+        },
+        $setOnInsert: {
+          userId,
+          companyId,
+          role,
+        },
+      }
+    );
   }
 }

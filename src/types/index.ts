@@ -1,3 +1,4 @@
+import { OtpFlow } from "@/mongo/otp.schema";
 import {
   AwsFunctionHandler,
   AwsFunctionImage,
@@ -10,6 +11,9 @@ export type Session = {
   };
   projectsApp?: {
     companyId?: string;
+  };
+  otp?: {
+    flow: OtpFlow;
   };
 };
 

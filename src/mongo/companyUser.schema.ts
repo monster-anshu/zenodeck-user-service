@@ -25,6 +25,7 @@ const CompanyUserSchema = new Schema({
     required: true,
     type: Schema.Types.ObjectId,
   },
+  role: String,
 });
 
 export const CompanyUserModel = model("companyUser", CompanyUserSchema);

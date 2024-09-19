@@ -6,6 +6,7 @@ import bcrypt from "bcryptjs";
 import { setSessionCompanyId } from "@/services/session";
 import { formatJSONResponse } from "@/lib/api-gateway";
 import { CompanyModel, CompanyProductModel, UserModel } from "@/mongo";
+import { CompanyService } from "@/services/company.service";
 
 export const main = middyfy<typeof schema>(
   async (event) => {
@@ -61,12 +62,21 @@ export const main = middyfy<typeof schema>(
         productId: productId,
       });
 
+      await CompanyService.addProductPermissionToUser({
+        companyId: companyInfo._id.toString(),
+        userId: userInfo._id.toString(),
+        products: [productId],
+        role: "SUPER_ADMIN",
+      });
+
       setSessionCompanyId(
         session,
         productInfo.productId,
         companyInfo._id.toString()
       );
     }
+
+    event.session = session;
 
     return formatJSONResponse({
       isSuccess: true,

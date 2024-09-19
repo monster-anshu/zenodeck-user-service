@@ -3,7 +3,6 @@ import type { FromSchema, JSONSchema } from "json-schema-to-ts";
 
 const schema = {
   type: "object",
-  // additionalProperties: false,
   properties: {
     emailId: { type: "string", format: "email" },
     password: { type: "string", minLength: 8 },
@@ -13,4 +12,4 @@ const schema = {
 } satisfies JSONSchema;
 
 export default schema;
-export type LoginShcema = FromSchema<typeof schema>;
+export type LoginSchema = FromSchema<typeof schema>;
