@@ -16,6 +16,7 @@ export const mongoConnection = async () => {
   ) {
     console.log("Creating a mongo connection.");
     connection = await mongoose.connect(MONGO_URI);
+    console.log("Mongo connection created.");
   }
 
   return connection;

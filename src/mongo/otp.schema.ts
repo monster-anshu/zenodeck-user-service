@@ -1,4 +1,6 @@
-import { InferSchemaType, model, Schema, Types } from "mongoose";
+import "./connection";
+
+import { InferSchemaType, model, Schema } from "mongoose";
 
 const OTP_FLOWS = ["CHANGE_PASSWORD", "FORGOT_PASSWORD"] as const;
 export type OtpFlow = (typeof OTP_FLOWS)[number];
