@@ -1,11 +1,10 @@
 import { middyfy } from "@/lib/internal";
 import schema from "./schema";
 import { formatJSONResponse } from "@/lib/api-gateway";
-import { OtpModel } from "@/mongo/otp.schema";
 import { HttpException } from "@/lib/error";
 import { HttpStatusCode } from "axios";
 import bcrypt from "bcryptjs";
-import { UserModel } from "@/mongo";
+import { OtpModel, UserModel } from "@/mongo";
 
 export const main = middyfy<typeof schema>(async (event) => {
   const { otp } = event.body;

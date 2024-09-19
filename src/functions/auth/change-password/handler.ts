@@ -1,8 +1,8 @@
 import { middyfy } from "@/lib/internal";
 import schema from "./schema";
 import { formatJSONResponse } from "@/lib/api-gateway";
-import { OtpModel } from "@/mongo/otp.schema";
 import { generateOTP } from "@/utils/random";
+import { OtpModel } from "@/mongo";
 
 export const main = middyfy<typeof schema>(async (event) => {
   const { password } = event.body;

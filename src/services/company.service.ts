@@ -85,6 +85,10 @@ export class CompanyService {
           companyId,
           role,
         },
+      },
+      {
+        upsert: true,
+        new: true,
       }
     );
   }
