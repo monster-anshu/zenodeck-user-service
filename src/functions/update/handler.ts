@@ -26,5 +26,6 @@ export const main = middyfy<typeof schema>(async (event) => {
 
   return formatJSONResponse({
     user,
+    isSuccess: true,
   });
 });

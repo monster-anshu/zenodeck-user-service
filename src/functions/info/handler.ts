@@ -12,5 +12,6 @@ export const main = middyfy<{}>(async (event) => {
 
   return formatJSONResponse({
     user,
+    isSuccess: true,
   });
 });

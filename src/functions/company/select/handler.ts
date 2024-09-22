@@ -10,11 +10,7 @@ import { CompanyModel, CompanyUserModel } from "@/mongo";
 export const main = middyfy<typeof schema>(async (event) => {
   const { companyId, productId } = event.body;
   const session = event.session || {};
-  const userId = session.userId;
-
-  if (!userId) {
-    throw new HttpException("USER_NOT_FOUND", HttpStatusCode.Unauthorized);
-  }
+  const userId = session.userId!;
 
   const [companyInfo, userCompany] = await Promise.all([
     CompanyModel.findOne({

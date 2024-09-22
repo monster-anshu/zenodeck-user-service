@@ -23,19 +23,13 @@ export const main = middyfy<typeof schema>(
     }
 
     if (!user.password) {
-      throw new HttpException(
-        "INVALID_CREDENTIAL",
-        HttpStatusCode.Unauthorized
-      );
+      throw new HttpException("INVALID_CREDENTIAL", HttpStatusCode.Forbidden);
     }
 
     const isValid = await bcrypt.compare(password, user.password);
 
     if (!isValid) {
-      throw new HttpException(
-        "INVALID_CREDENTIAL",
-        HttpStatusCode.Unauthorized
-      );
+      throw new HttpException("INVALID_CREDENTIAL", HttpStatusCode.Forbidden);
     }
 
     session = {
