@@ -1,7 +1,7 @@
 import { formatJSONResponse } from "@/lib/api-gateway";
 import { HttpException } from "@/lib/error";
 import bcrypt from "bcryptjs";
-import { HttpStatusCode } from "axios";
+import { HttpStatusCode } from "@/types/http";
 import { setAllProductCompanyId } from "@/services/session";
 import { CompanyService } from "@/services/company.service";
 import { UserModel } from "@/mongo";

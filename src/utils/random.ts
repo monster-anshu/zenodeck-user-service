@@ -9,5 +9,5 @@ export const randomString = (
 };
 
 export const generateOTP = () => {
-  return randomString(5, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+  return randomString(6, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 };

@@ -3,7 +3,7 @@ import { HttpException } from "@/lib/error";
 import { UserModel } from "@/mongo";
 import { Session } from "@/types";
 import middy from "@middy/core";
-import { HttpStatusCode } from "axios";
+import { HttpStatusCode } from "@/types/http";
 import { Types } from "mongoose";
 
 export interface MiddyOptions {

@@ -14,6 +14,7 @@ export type Session = {
   };
   otp?: {
     flow: OtpFlow;
+    id: string;
   };
 };
 

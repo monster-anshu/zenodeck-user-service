@@ -5,3 +5,4 @@ export const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY;
 export const MONGO_URI = process.env.MONGO_URI as string;
 export const SESSION_JWT_SECRET = process.env.SESSION_JWT_SECRET as string;
 export const STAGE = process.env.STAGE as string;
+export const RESEND_API_KEY = process.env.RESEND_API_KEY as string;

@@ -1,7 +1,7 @@
 import { middyfy } from "@/lib/internal";
 import schema from "./schema";
 import { HttpException } from "@/lib/error";
-import { HttpStatusCode } from "axios";
+import { HttpStatusCode } from "@/types/http";
 import bcrypt from "bcryptjs";
 import { setSessionCompanyId } from "@/services/session";
 import { formatJSONResponse } from "@/lib/api-gateway";

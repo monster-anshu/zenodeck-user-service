@@ -36,6 +36,7 @@ const serverlessConfiguration: Serverless = {
       ENCRYPTION_IV: "${env:ENCRYPTION_IV}",
       ENCRYPTION_KEY: "${env:ENCRYPTION_KEY}",
       MONGO_URI: "${env:MONGO_URI}",
+      RESEND_API_KEY: "${env:RESEND_API_KEY}",
       SESSION_JWT_SECRET: "${env:SESSION_JWT_SECRET}",
       STAGE: "${env:STAGE}",
       TZ: "Asia/Kolkata",
