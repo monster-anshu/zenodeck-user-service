@@ -1,7 +1,7 @@
 import { normalizeHttpResponse } from "@middy/util";
 import { getChanges } from "@/utils";
 import middy from "@middy/core";
-import { BASE_DOMAIN, STAGE } from "@/env";
+import { BASE_DOMAIN, SESSION_COOKIE_SECRET, STAGE } from "@/env";
 import { SessionCookie } from "@/utils/cookie";
 import signJwt from "@/lib/jwt/sign";
 import verifyJwt from "@/lib/jwt/verify";
@@ -9,7 +9,7 @@ import dayjs from "@/dayjs";
 
 const jwtSessionCookie = new SessionCookie({
   name: "__session",
-  secret: process.env.SESSION_COOKIE_SECRET,
+  secret: SESSION_COOKIE_SECRET,
 });
 
 const getDateAfterMinutes = (minutes: number) => {

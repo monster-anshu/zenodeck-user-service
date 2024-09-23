@@ -30,7 +30,7 @@ export const main = middyfy<typeof schema>(async (event) => {
     },
     {
       $set: {
-        companyLogo: companyLogo,
+        companyLogo: companyLogoToUse,
         companyName,
       },
     },

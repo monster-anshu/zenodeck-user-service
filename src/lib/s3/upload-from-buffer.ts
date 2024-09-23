@@ -1,9 +1,12 @@
-import { correctFileName, getUploadPath } from "@/functions/file/upload/utills";
 import {
   ObjectCannedACL,
   PutObjectCommand,
   S3Client,
 } from "@aws-sdk/client-s3";
+import {
+  correctFileName,
+  getUploadPath,
+} from "@user-functions/file/upload/utills";
 
 const client = new S3Client({});
 

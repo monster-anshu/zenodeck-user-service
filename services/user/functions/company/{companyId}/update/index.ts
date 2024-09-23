@@ -7,7 +7,7 @@ export const companyUpdate: AwsFunction = {
   events: [
     {
       http: {
-        method: "post",
+        method: "patch",
         path: generatePath(__dirname),
         request: {
           schemas: {

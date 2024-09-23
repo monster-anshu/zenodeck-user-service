@@ -12,10 +12,11 @@
     "sourceMap": true, // Enable source maps for debugging
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@user-*": ["./services/user/*"]
     }
   },
-  "include": ["src/**/*", "serverless.ts"], // Include all TypeScript files in the 'src' folder
+  "include": ["src/**/*", "services/**/*"],
   "exclude": ["node_modules", "dist"], // Exclude 'node_modules' and 'dist' from compilation
   "ts-node": {
     "require": ["tsconfig-paths/register"]
