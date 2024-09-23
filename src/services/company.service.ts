@@ -33,7 +33,7 @@ export class CompanyService {
     const companies = await CompanyModel.find(
       {
         _id: {
-          $in: userCompanies.map((item) => item._id),
+          $in: userCompanies.map((item) => item.companyId),
         },
         status: "ACTIVE",
       },

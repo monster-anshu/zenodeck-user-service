@@ -37,6 +37,8 @@ const serverlessConfiguration: Serverless = {
       ENCRYPTION_KEY: "${env:ENCRYPTION_KEY}",
       MONGO_URI: "${env:MONGO_URI}",
       RESEND_API_KEY: "${env:RESEND_API_KEY}",
+      S3_HOST: "${env:S3_HOST}",
+      S3_TEMP_BUCKET: "${env:S3_TEMP_BUCKET}",
       SESSION_JWT_SECRET: "${env:SESSION_JWT_SECRET}",
       STAGE: "${env:STAGE}",
       TZ: "Asia/Kolkata",
@@ -44,6 +46,17 @@ const serverlessConfiguration: Serverless = {
     apiGateway: {
       // disableDefaultEndpoint: true,
     } as never,
+    iam: {
+      role: {
+        statements: [
+          {
+            Effect: "Allow",
+            Resource: "*",
+            Action: "s3:*",
+          },
+        ],
+      },
+    },
   },
   package: { individually: true },
   functions: functions,
