@@ -56,10 +56,10 @@ export const main = middyfy<typeof schema>(
     }
 
     if (productId && companyInfo) {
-      productInfo = await CompanyProductModel.create({
-        companyId: companyInfo._id,
-        status: "ACTIVE",
+      productInfo = await CompanyService.addProduct({
+        companyId: companyInfo._id.toString(),
         productId: productId,
+        userId: userInfo._id.toString(),
       });
 
       await CompanyService.addProductPermissionToUser({

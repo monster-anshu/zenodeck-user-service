@@ -1,6 +1,7 @@
 import { Product } from "@/common/const";
 import {
   CompanyModel,
+  CompanyProductModel,
   CompanyUser,
   CompanyUserModel,
   UserCompany,
@@ -91,5 +92,22 @@ export class CompanyService {
         new: true,
       }
     );
+  }
+
+  static async addProduct({
+    companyId,
+    productId,
+  }: {
+    companyId: string;
+    productId: Product;
+    plan?: string;
+    userId: string;
+  }) {
+    const companyProduct = await CompanyProductModel.create({
+      companyId: companyId,
+      status: "ACTIVE",
+      productId: productId,
+    });
+    return companyProduct;
   }
 }
