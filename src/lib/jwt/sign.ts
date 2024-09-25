@@ -1,6 +1,6 @@
-import { SESSION_JWT_SECRET } from "@/env";
-import { Session } from "@/types";
-import jwt, { SignOptions } from "jsonwebtoken";
+import { SESSION_JWT_SECRET } from '@/env';
+import { Session } from '@/types';
+import jwt, { SignOptions } from 'jsonwebtoken';
 
 const signJwt = (data: Session, options: SignOptions) => {
   const { expiresIn } = options;

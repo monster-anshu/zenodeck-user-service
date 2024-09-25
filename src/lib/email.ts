@@ -1,4 +1,4 @@
-import { RESEND_API_KEY } from "@/env";
+import { RESEND_API_KEY } from '@/env';
 
 type SendEmailOptions = {
   to: string | string[];
@@ -8,14 +8,14 @@ type SendEmailOptions = {
 
 export const sendEmail = async ({ html, subject, to }: SendEmailOptions) => {
   try {
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "User Service <no-reply@himanshu-gunwant.com>",
+        from: 'User Service <no-reply@himanshu-gunwant.com>',
         to: Array.isArray(to) ? to : [to],
         subject: subject,
         html: html,

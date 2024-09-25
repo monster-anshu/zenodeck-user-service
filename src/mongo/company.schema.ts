@@ -1,9 +1,9 @@
-import "./connection";
+import './connection';
 
-import { Product } from "@/common/const";
-import { InferSchemaType, model, Schema, Types } from "mongoose";
+import { Product } from '@/common/const';
+import { InferSchemaType, model, Schema, Types } from 'mongoose';
 
-export const COMPANY_STATUS = ["ACTIVE", "DELETED"] as const;
+export const COMPANY_STATUS = ['ACTIVE', 'DELETED'] as const;
 
 const CompanySchema = new Schema(
   {
@@ -19,17 +19,17 @@ const CompanySchema = new Schema(
       type: Schema.Types.ObjectId,
     },
     status: {
-      default: "ACTIVE",
+      default: 'ACTIVE',
       enum: COMPANY_STATUS,
       type: String,
     },
   },
   {
     timestamps: true,
-  }
+  },
 );
 
-export const CompanyModel = model("company", CompanySchema);
+export const CompanyModel = model('company', CompanySchema);
 export type Company = InferSchemaType<typeof CompanySchema>;
 export type CompanyDocument = Company & { _id: Types.ObjectId };
 export type UserCompany = {

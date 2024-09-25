@@ -1,10 +1,10 @@
-import { Product, PRODUCT_IDS } from "@/common/const";
-import { UserCompany } from "@/mongo/company.schema";
-import { Session } from "@/types";
+import { Product, PRODUCT_IDS } from '@/common/const';
+import { UserCompany } from '@/mongo/company.schema';
+import { Session } from '@/types';
 
 const sessionCompanyKeyMap = {
-  BOOKINGS: "bookingsApp",
-  PROJECTS: "projectsApp",
+  BOOKINGS: 'bookingsApp',
+  PROJECTS: 'projectsApp',
 } as const;
 
 export const setSessionCompanyId = (

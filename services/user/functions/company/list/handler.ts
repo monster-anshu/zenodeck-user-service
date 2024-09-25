@@ -1,6 +1,6 @@
-import { formatJSONResponse } from "@/lib/api-gateway";
-import { middyfy } from "@/lib/internal";
-import { CompanyService } from "@/services/company.service";
+import { formatJSONResponse } from '@/lib/api-gateway';
+import { middyfy } from '@/lib/internal';
+import { CompanyService } from '@/services/company.service';
 
 export const main = middyfy<{}>(async (event) => {
   const session = event.session || {};

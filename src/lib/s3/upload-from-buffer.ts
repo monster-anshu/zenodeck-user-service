@@ -2,11 +2,11 @@ import {
   ObjectCannedACL,
   PutObjectCommand,
   S3Client,
-} from "@aws-sdk/client-s3";
+} from '@aws-sdk/client-s3';
 import {
   correctFileName,
   getUploadPath,
-} from "@user-functions/file/upload/utills";
+} from '@user-functions/file/upload/utills';
 
 const client = new S3Client({});
 
@@ -20,19 +20,19 @@ export const getRandomFilePath = ({
   prependKey?: string;
 }) => {
   const finalExtenstion = ext;
-  let finalFileName = Date.now() + "";
+  let finalFileName = Date.now() + '';
   if (fileName) {
-    const fileNameWoExt = fileName.substring(0, fileName.lastIndexOf("."));
-    finalFileName += "/" + correctFileName(fileNameWoExt);
+    const fileNameWoExt = fileName.substring(0, fileName.lastIndexOf('.'));
+    finalFileName += '/' + correctFileName(fileNameWoExt);
   }
-  let Key = "";
+  let Key = '';
   const processedPrependKey = prependKey
-    ? prependKey.replace(/^\/+|\/+$/g, "")
-    : "";
+    ? prependKey.replace(/^\/+|\/+$/g, '')
+    : '';
   if (processedPrependKey) {
-    Key += processedPrependKey + "/";
+    Key += processedPrependKey + '/';
   }
-  Key += getUploadPath() + finalFileName + "." + finalExtenstion;
+  Key += getUploadPath() + finalFileName + '.' + finalExtenstion;
   return {
     Key,
   };
@@ -42,7 +42,7 @@ export const uploadFromBuffer = async ({
   data,
   fileName,
   bucket = process.env.S3_TEMP_BUCKET,
-  prependKey = "",
+  prependKey = '',
   contentType,
   acl,
   customFileKey,
@@ -73,7 +73,7 @@ export const uploadFromBuffer = async ({
       Body: data,
       ACL: acl || undefined,
       ContentType: contentType,
-    })
+    }),
   );
   return {
     key: destinationKey,

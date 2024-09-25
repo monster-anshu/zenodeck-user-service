@@ -1,12 +1,12 @@
-import { middyfy } from "@/lib/internal";
-import schema from "./schema";
-import { HttpException } from "@/lib/error";
-import { HttpStatusCode } from "@/types/http";
-import bcrypt from "bcryptjs";
-import { setSessionCompanyId } from "@/services/session";
-import { formatJSONResponse } from "@/lib/api-gateway";
-import { CompanyModel, CompanyProductModel, UserModel } from "@/mongo";
-import { CompanyService } from "@/services/company.service";
+import { middyfy } from '@/lib/internal';
+import schema from './schema';
+import { HttpException } from '@/lib/error';
+import { HttpStatusCode } from '@/types/http';
+import bcrypt from 'bcryptjs';
+import { setSessionCompanyId } from '@/services/session';
+import { formatJSONResponse } from '@/lib/api-gateway';
+import { CompanyModel, CompanyProductModel, UserModel } from '@/mongo';
+import { CompanyService } from '@/services/company.service';
 
 export const main = middyfy<typeof schema>(
   async (event) => {
@@ -24,11 +24,11 @@ export const main = middyfy<typeof schema>(
     const emailId = event.body.emailId.toLowerCase();
     const existingUserInfo = await UserModel.findOne({
       emailId: emailId,
-      status: "ACTIVE",
+      status: 'ACTIVE',
     });
 
     if (existingUserInfo) {
-      throw new HttpException("USER_EXISTS", HttpStatusCode.Conflict);
+      throw new HttpException('USER_EXISTS', HttpStatusCode.Conflict);
     }
 
     const hash = await bcrypt.hash(password, 10);
@@ -40,7 +40,7 @@ export const main = middyfy<typeof schema>(
       lastName: lastName,
       mobileNo: mobileNo,
       password: hash,
-      status: "ACTIVE",
+      status: 'ACTIVE',
     });
     session.userId = userInfo._id.toString();
 
@@ -51,7 +51,7 @@ export const main = middyfy<typeof schema>(
       companyInfo = await CompanyModel.create({
         companyName: companyName,
         primaryUserId: userInfo._id,
-        status: "ACTIVE",
+        status: 'ACTIVE',
       });
     }
 
@@ -66,13 +66,13 @@ export const main = middyfy<typeof schema>(
         companyId: companyInfo._id.toString(),
         userId: userInfo._id.toString(),
         products: [productId],
-        role: "SUPER_ADMIN",
+        role: 'SUPER_ADMIN',
       });
 
       setSessionCompanyId(
         session,
         productInfo.productId,
-        companyInfo._id.toString()
+        companyInfo._id.toString(),
       );
     }
 
@@ -84,5 +84,5 @@ export const main = middyfy<typeof schema>(
   },
   {
     checkAuth: false,
-  }
+  },
 );

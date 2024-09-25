@@ -1,6 +1,6 @@
-import { SESSION_JWT_SECRET } from "@/env";
-import { Session } from "@/types";
-import jwt from "jsonwebtoken";
+import { SESSION_JWT_SECRET } from '@/env';
+import { Session } from '@/types';
+import jwt from 'jsonwebtoken';
 
 const verifyJwt = (token: string) => {
   return new Promise<Session | null>((resolve) => {
@@ -8,7 +8,7 @@ const verifyJwt = (token: string) => {
       return resolve(null);
     }
     jwt.verify(token, SESSION_JWT_SECRET, function (_err, decoded) {
-      if (typeof decoded === "object") {
+      if (typeof decoded === 'object') {
         resolve(decoded?.data || null);
         return;
       }

@@ -72,7 +72,7 @@ export const extensionsMap: Record<string, string[]> = {
   // 'application/mods+xml': [ 'mods' ],
   // 'application/mp21': [ 'm21', 'mp21' ],
   // 'application/mp4': [ 'mp4s', 'm4p' ],
-  "application/msword": ["doc", "dot"],
+  'application/msword': ['doc', 'dot'],
   // 'application/mxf': [ 'mxf' ],
   // 'application/n-quads': [ 'nq' ],
   // 'application/n-triples': [ 'nt' ],
@@ -95,7 +95,7 @@ export const extensionsMap: Record<string, string[]> = {
   // 'application/oxps': [ 'oxps' ],
   // 'application/p2p-overlay+xml': [ 'relo' ],
   // 'application/patch-ops-error+xml': [ 'xer' ],
-  "application/pdf": ["pdf"],
+  'application/pdf': ['pdf'],
   // 'application/pgp-encrypted': [ 'pgp' ],
   // 'application/pgp-keys': [ 'asc' ],
   // 'application/pgp-signature': [ 'asc', 'sig' ],
@@ -364,7 +364,7 @@ export const extensionsMap: Record<string, string[]> = {
   // 'application/vnd.mozilla.xul+xml': [ 'xul' ],
   // 'application/vnd.ms-artgalry': [ 'cil' ],
   // 'application/vnd.ms-cab-compressed': [ 'cab' ],
-  "application/vnd.ms-excel": ["xls", "xlm", "xla", "xlc", "xlt", "xlw"],
+  'application/vnd.ms-excel': ['xls', 'xlm', 'xla', 'xlc', 'xlt', 'xlw'],
   // 'application/vnd.ms-excel.addin.macroenabled.12': [ 'xlam' ],
   // 'application/vnd.ms-excel.sheet.binary.macroenabled.12': [ 'xlsb' ],
   // 'application/vnd.ms-excel.sheet.macroenabled.12': [ 'xlsm' ],
@@ -432,10 +432,10 @@ export const extensionsMap: Record<string, string[]> = {
   // 'application/vnd.openxmlformats-officedocument.presentationml.slide': [ 'sldx' ],
   // 'application/vnd.openxmlformats-officedocument.presentationml.slideshow': [ 'ppsx' ],
   // 'application/vnd.openxmlformats-officedocument.presentationml.template': [ 'potx' ],
-  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": ["xlsx"],
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': ['xlsx'],
   // 'application/vnd.openxmlformats-officedocument.spreadsheetml.template': [ 'xltx' ],
-  "application/vnd.openxmlformats-officedocument.wordprocessingml.document": [
-    "docx",
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document': [
+    'docx',
   ],
   // 'application/vnd.openxmlformats-officedocument.wordprocessingml.template': [ 'dotx' ],
   // 'application/vnd.osgeo.mapguide.package': [ 'mgp' ],
@@ -776,7 +776,7 @@ export const extensionsMap: Record<string, string[]> = {
   // 'image/ief': [ 'ief' ],
   // 'image/jls': [ 'jls' ],
   // 'image/jp2': [ 'jp2', 'jpg2' ],
-  "image/jpeg": ["jpeg", "jpg", "jpe"],
+  'image/jpeg': ['jpeg', 'jpg', 'jpe'],
   // 'image/jph': [ 'jph' ],
   // 'image/jphc': [ 'jhc' ],
   // 'image/jpm': [ 'jpm' ],
@@ -790,7 +790,7 @@ export const extensionsMap: Record<string, string[]> = {
   // 'image/jxss': [ 'jxss' ],
   // 'image/ktx': [ 'ktx' ],
   // 'image/ktx2': [ 'ktx2' ],
-  "image/png": ["png"],
+  'image/png': ['png'],
   // 'image/prs.btif': [ 'btif' ],
   // 'image/prs.pti': [ 'pti' ],
   // 'image/sgi': [ 'sgi' ],
@@ -821,7 +821,7 @@ export const extensionsMap: Record<string, string[]> = {
   // 'image/vnd.wap.wbmp': [ 'wbmp' ],
   // 'image/vnd.xiff': [ 'xif' ],
   // 'image/vnd.zbrush.pcx': [ 'pcx' ],
-  "image/webp": ["webp"],
+  'image/webp': ['webp'],
   // 'image/wmf': [ 'wmf' ],
   // 'image/x-3ds': [ '3ds' ],
   // 'image/x-cmu-raster': [ 'ras' ],
@@ -998,7 +998,7 @@ export const extensionsMap: Record<string, string[]> = {
 };
 
 export function extension(type: string) {
-  if (!type || typeof type !== "string") {
+  if (!type || typeof type !== 'string') {
     return false;
   }
   const EXTRACT_TYPE_REGEXP = /^\s*([^;\s]*)(?:;|\s|$)/;

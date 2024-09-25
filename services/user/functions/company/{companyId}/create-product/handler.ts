@@ -1,16 +1,16 @@
-import { middyfy } from "@/lib/internal";
-import schema from "./schema";
-import { CompanyModel, CompanyProductModel } from "@/mongo";
-import { Types } from "mongoose";
-import { formatJSONResponse } from "@/lib/api-gateway";
-import { CompanyService } from "@/services/company.service";
-import { setSessionCompanyId } from "@/services/session";
+import { middyfy } from '@/lib/internal';
+import schema from './schema';
+import { CompanyModel, CompanyProductModel } from '@/mongo';
+import { Types } from 'mongoose';
+import { formatJSONResponse } from '@/lib/api-gateway';
+import { CompanyService } from '@/services/company.service';
+import { setSessionCompanyId } from '@/services/session';
 
 export const main = middyfy<typeof schema>(async (event) => {
   const { productId } = event.body;
   const session = event.session || {};
   const userId = session.userId!;
-  const companyId = event.pathParameters?.["companyId"]!;
+  const companyId = event.pathParameters?.['companyId']!;
 
   const [companyInfo, companyProduct] = await Promise.all([
     CompanyModel.findOne({
@@ -26,7 +26,7 @@ export const main = middyfy<typeof schema>(async (event) => {
   if (!companyInfo) {
     return formatJSONResponse({
       isSuccess: false,
-      error: "INVALID_COMPANY",
+      error: 'INVALID_COMPANY',
     });
   }
 
@@ -41,7 +41,7 @@ export const main = middyfy<typeof schema>(async (event) => {
       companyId: companyInfo._id.toString(),
       userId: userId,
       products: [productInfo.productId],
-      role: "SUPER_ADMIN",
+      role: 'SUPER_ADMIN',
     });
   }
 

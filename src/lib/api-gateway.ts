@@ -2,16 +2,16 @@ import type {
   APIGatewayProxyEvent,
   APIGatewayProxyResult,
   Handler,
-} from "aws-lambda";
-import type { FromSchema, JSONSchema } from "json-schema-to-ts";
-import type { APIGatewayProxyStructuredResultV2 } from "aws-lambda";
-import { Session } from "@/types";
+} from 'aws-lambda';
+import type { FromSchema, JSONSchema } from 'json-schema-to-ts';
+import type { APIGatewayProxyStructuredResultV2 } from 'aws-lambda';
+import { Session } from '@/types';
 
 export type ValidatedAPIGatewayProxyEvent<S extends JSONSchema> = Omit<
   APIGatewayProxyEvent & {
     session?: Session;
   },
-  "body"
+  'body'
 > & {
   rawBody: string;
   body: FromSchema<S>;
@@ -24,7 +24,7 @@ export type ValidatedEventAPIGatewayProxyEvent<S extends JSONSchema> = Handler<
 
 export const formatJSONResponse = (
   body: object,
-  meta?: Omit<APIGatewayProxyStructuredResultV2, "body">,
+  meta?: Omit<APIGatewayProxyStructuredResultV2, 'body'>,
 ) => {
   return {
     ...meta,
@@ -44,6 +44,6 @@ export const formatRedirectResponse = (
       Location,
     },
     statusCode: meta?.statusCode || 302,
-    body: "",
+    body: '',
   };
 };

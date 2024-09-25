@@ -1,9 +1,9 @@
-import "./connection";
+import './connection';
 
-import { PRODUCT_IDS } from "@/common/const";
-import { InferSchemaType, model, Schema } from "mongoose";
+import { PRODUCT_IDS } from '@/common/const';
+import { InferSchemaType, model, Schema } from 'mongoose';
 
-export const COMPANY_USER_STATUS = ["ACTIVE", "DELETED"] as const;
+export const COMPANY_USER_STATUS = ['ACTIVE', 'DELETED'] as const;
 
 const CompanyUserSchema = new Schema({
   companyId: {
@@ -17,7 +17,7 @@ const CompanyUserSchema = new Schema({
     },
   ],
   status: {
-    default: "ACTIVE",
+    default: 'ACTIVE',
     enum: COMPANY_USER_STATUS,
     type: String,
   },
@@ -28,5 +28,5 @@ const CompanyUserSchema = new Schema({
   role: String,
 });
 
-export const CompanyUserModel = model("companyUser", CompanyUserSchema);
+export const CompanyUserModel = model('companyUser', CompanyUserSchema);
 export type CompanyUser = InferSchemaType<typeof CompanyUserSchema>;

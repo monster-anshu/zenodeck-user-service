@@ -1,8 +1,8 @@
-import { OtpFlow } from "@/mongo/otp.schema";
+import { OtpFlow } from '@/mongo/otp.schema';
 import {
   AwsFunctionHandler,
   AwsFunctionImage,
-} from "serverless/plugins/aws/provider/awsProvider";
+} from 'serverless/plugins/aws/provider/awsProvider';
 
 export type Session = {
   userId?: string;

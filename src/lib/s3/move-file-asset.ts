@@ -1,17 +1,17 @@
-import { S3_HOST } from "@/env";
+import { S3_HOST } from '@/env';
 import {
   S3Client,
   CopyObjectCommand,
   DeleteObjectCommand,
   ObjectCannedACL,
-} from "@aws-sdk/client-s3";
+} from '@aws-sdk/client-s3';
 
 const client = new S3Client({});
 
 export const moveTempFileToAnotherBucket = async ({
   url,
   bucketToMove,
-  prependKey = "",
+  prependKey = '',
   acl,
 }: {
   url: string;
@@ -20,22 +20,22 @@ export const moveTempFileToAnotherBucket = async ({
   acl?: ObjectCannedACL;
 }) => {
   const sourceBucket = process.env.S3_TEMP_BUCKET;
-  const urlWithoutPorotocl = url.replace(/^https?:\/\//, "");
+  const urlWithoutPorotocl = url.replace(/^https?:\/\//, '');
   const sourceKey = urlWithoutPorotocl
-    .replace(`${S3_HOST}/${sourceBucket}/`, "")
-    .replace(`${sourceBucket}.${S3_HOST}/`, "");
+    .replace(`${S3_HOST}/${sourceBucket}/`, '')
+    .replace(`${sourceBucket}.${S3_HOST}/`, '');
   if (sourceKey == urlWithoutPorotocl) {
     return {
       url,
     };
   }
   let destinationKey = prependKey;
-  if (prependKey && !prependKey.endsWith("/")) {
-    destinationKey + "/";
+  if (prependKey && !prependKey.endsWith('/')) {
+    destinationKey + '/';
   }
   destinationKey += sourceKey;
   const copyCommand = new CopyObjectCommand({
-    CopySource: sourceBucket + "/" + sourceKey,
+    CopySource: sourceBucket + '/' + sourceKey,
     Bucket: bucketToMove,
     Key: destinationKey,
     ACL: acl || undefined,
@@ -48,6 +48,6 @@ export const moveTempFileToAnotherBucket = async ({
   await client.send(deleteComand);
 
   return {
-    url: "https://" + S3_HOST + "/" + bucketToMove + "/" + destinationKey,
+    url: 'https://' + S3_HOST + '/' + bucketToMove + '/' + destinationKey,
   };
 };

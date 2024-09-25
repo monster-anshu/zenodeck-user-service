@@ -1,8 +1,8 @@
-import { formatJSONResponse } from "@/lib/api-gateway";
-import { middyfy } from "@/lib/internal";
-import { UserModel } from "@/mongo";
-import { Types } from "mongoose";
-import schema from "./schema";
+import { formatJSONResponse } from '@/lib/api-gateway';
+import { middyfy } from '@/lib/internal';
+import { UserModel } from '@/mongo';
+import { Types } from 'mongoose';
+import schema from './schema';
 
 export const main = middyfy<typeof schema>(async (event) => {
   const { firstName, lastName } = event.body;
@@ -19,9 +19,9 @@ export const main = middyfy<typeof schema>(async (event) => {
     },
     {
       new: true,
-    }
+    },
   )
-    .select("-password")
+    .select('-password')
     .lean();
 
   return formatJSONResponse({

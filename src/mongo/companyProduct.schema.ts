@@ -1,9 +1,9 @@
-import "./connection";
+import './connection';
 
-import { PRODUCT_IDS } from "@/common/const";
-import { InferSchemaType, model, Schema } from "mongoose";
+import { PRODUCT_IDS } from '@/common/const';
+import { InferSchemaType, model, Schema } from 'mongoose';
 
-const COMPANY_PRODUCT_STATUS = ["ACTIVE", "DELETED"] as const;
+const COMPANY_PRODUCT_STATUS = ['ACTIVE', 'DELETED'] as const;
 
 const CompanyProductSchema = new Schema(
   {
@@ -16,11 +16,11 @@ const CompanyProductSchema = new Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 export const CompanyProductModel = model(
-  "companyProduct",
-  CompanyProductSchema
+  'companyProduct',
+  CompanyProductSchema,
 );
 export type CompanyProduct = InferSchemaType<typeof CompanyProductSchema>;

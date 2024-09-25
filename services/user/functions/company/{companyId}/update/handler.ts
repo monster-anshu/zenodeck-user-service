@@ -1,23 +1,23 @@
-import { middyfy } from "@/lib/internal";
-import schema from "./schema";
-import { moveTempFileToAnotherBucket } from "@/lib/s3/move-file-asset";
-import { S3_BUCKETS } from "@/lib/s3/folder";
-import { CompanyModel } from "@/mongo";
-import { Types } from "mongoose";
-import { formatJSONResponse } from "@/lib/api-gateway";
+import { middyfy } from '@/lib/internal';
+import schema from './schema';
+import { moveTempFileToAnotherBucket } from '@/lib/s3/move-file-asset';
+import { S3_BUCKETS } from '@/lib/s3/folder';
+import { CompanyModel } from '@/mongo';
+import { Types } from 'mongoose';
+import { formatJSONResponse } from '@/lib/api-gateway';
 
 export const main = middyfy<typeof schema>(async (event) => {
   const { companyName, companyLogo } = event.body;
   const userId = event.session?.userId!;
-  const companyId = event.pathParameters?.["companyId"]!;
+  const companyId = event.pathParameters?.['companyId']!;
 
   let companyLogoToUse = undefined;
   if (companyLogo) {
     const { url } = await moveTempFileToAnotherBucket({
       url: companyLogo,
       bucketToMove: S3_BUCKETS.USER_UPLOAD,
-      prependKey: "company-documents/" + companyId + "/logo/",
-      acl: "public-read",
+      prependKey: 'company-documents/' + companyId + '/logo/',
+      acl: 'public-read',
     });
     companyLogoToUse = url;
   }
@@ -26,7 +26,7 @@ export const main = middyfy<typeof schema>(async (event) => {
     {
       _id: new Types.ObjectId(companyId),
       primaryUserId: new Types.ObjectId(userId),
-      status: "ACTIVE",
+      status: 'ACTIVE',
     },
     {
       $set: {
@@ -36,7 +36,7 @@ export const main = middyfy<typeof schema>(async (event) => {
     },
     {
       new: true,
-    }
+    },
   ).lean();
 
   if (!companyInfo) {

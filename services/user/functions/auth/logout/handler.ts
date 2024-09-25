@@ -1,5 +1,5 @@
-import { formatJSONResponse } from "@/lib/api-gateway";
-import { middyfy } from "@/lib/internal";
+import { formatJSONResponse } from '@/lib/api-gateway';
+import { middyfy } from '@/lib/internal';
 
 export const main = middyfy<{}>(
   async (event) => {
@@ -13,5 +13,5 @@ export const main = middyfy<{}>(
   },
   {
     checkAuth: false,
-  }
+  },
 );

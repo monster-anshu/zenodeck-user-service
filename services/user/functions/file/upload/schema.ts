@@ -1,9 +1,9 @@
 export default {
-  type: "object",
+  type: 'object',
   properties: {
-    mimeType: { type: "string" },
-    module: { type: "string" },
-    fileName: { type: "string" },
+    mimeType: { type: 'string' },
+    module: { type: 'string' },
+    fileName: { type: 'string' },
   },
-  required: ["mimeType"],
+  required: ['mimeType'],
 } as const;

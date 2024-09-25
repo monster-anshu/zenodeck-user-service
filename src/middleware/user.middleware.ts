@@ -1,10 +1,10 @@
-import { formatJSONResponse } from "@/lib/api-gateway";
-import { HttpException } from "@/lib/error";
-import { UserModel } from "@/mongo";
-import { Session } from "@/types";
-import middy from "@middy/core";
-import { HttpStatusCode } from "@/types/http";
-import { Types } from "mongoose";
+import { formatJSONResponse } from '@/lib/api-gateway';
+import { HttpException } from '@/lib/error';
+import { UserModel } from '@/mongo';
+import { Session } from '@/types';
+import middy from '@middy/core';
+import { HttpStatusCode } from '@/types/http';
+import { Types } from 'mongoose';
 
 export interface MiddyOptions {
   checkAuth?: boolean;
@@ -22,14 +22,14 @@ export const userAuthMiddleware = (options?: MiddyOptions) => {
     if (userId) {
       user = await UserModel.findOne({
         _id: new Types.ObjectId(userId),
-        status: "ACTIVE",
+        status: 'ACTIVE',
       })
-        .select("-password")
+        .select('-password')
         .lean();
     }
 
     if (!user) {
-      throw new HttpException("UNAUTHORIZED", HttpStatusCode.Unauthorized);
+      throw new HttpException('UNAUTHORIZED', HttpStatusCode.Unauthorized);
     }
 
     session.userId = user._id.toString();

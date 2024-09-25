@@ -1,11 +1,11 @@
-import { MONGO_URI, STAGE } from "@/env";
-import mongoose from "mongoose";
+import { MONGO_URI, STAGE } from '@/env';
+import mongoose from 'mongoose';
 
-if (["local", "dev"].includes(STAGE)) {
-  mongoose.set("debug", true);
+if (['local', 'dev'].includes(STAGE)) {
+  mongoose.set('debug', true);
 }
 
-mongoose.set("autoIndex", STAGE === "local");
+mongoose.set('autoIndex', STAGE === 'local');
 
 let connection: typeof mongoose | null = null;
 
@@ -14,9 +14,9 @@ export const mongoConnection = async () => {
     !connection ||
     connection.connection.readyState !== mongoose.STATES.connected
   ) {
-    console.log("Creating a mongo connection.");
+    console.log('Creating a mongo connection.');
     connection = await mongoose.connect(MONGO_URI);
-    console.log("Mongo connection created.");
+    console.log('Mongo connection created.');
   }
 
   return connection;

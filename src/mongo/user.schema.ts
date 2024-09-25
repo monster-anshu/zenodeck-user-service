@@ -1,8 +1,8 @@
-import "./connection";
+import './connection';
 
-import { InferSchemaType, Schema, Types, model } from "mongoose";
+import { InferSchemaType, Schema, Types, model } from 'mongoose';
 
-const USER_STATUS = ["ACTIVE", "UNVERIFIED", "DELETED"] as const;
+const USER_STATUS = ['ACTIVE', 'UNVERIFIED', 'DELETED'] as const;
 
 const UserSchema = new Schema(
   {
@@ -29,7 +29,7 @@ const UserSchema = new Schema(
       type: String,
     },
     status: {
-      default: "ACTIVE",
+      default: 'ACTIVE',
       enum: USER_STATUS,
       type: String,
     },
@@ -39,8 +39,8 @@ const UserSchema = new Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
-export const UserModel = model("User", UserSchema);
+export const UserModel = model('User', UserSchema);
 export type User = InferSchemaType<typeof UserSchema>;

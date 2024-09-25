@@ -1,4 +1,3 @@
 services:
-
   user-service:
     path: services/user

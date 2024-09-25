@@ -1,5 +1,5 @@
-import middy from "@middy/core";
-import * as cookie from "cookie";
+import middy from '@middy/core';
+import * as cookie from 'cookie';
 
 export class SessionCookie {
   name: string;
@@ -29,15 +29,15 @@ export class SessionCookie {
   }
 
   setcookie(
-    res: middy.Request["response"],
+    res: middy.Request['response'],
     value: string,
     options: cookie.CookieSerializeOptions,
   ) {
     const defaultOptions = {
       httpOnly: true,
       secure: true,
-      path: "/",
-      SameSite: "None",
+      path: '/',
+      SameSite: 'None',
     };
 
     const data = cookie.serialize(this.name, value, {
@@ -45,7 +45,7 @@ export class SessionCookie {
       ...options,
     });
 
-    const prev = res.multiValueHeaders?.["Set-Cookie"] || [];
+    const prev = res.multiValueHeaders?.['Set-Cookie'] || [];
     const header = Array.isArray(prev) ? prev.concat(data) : [prev, data];
     return header;
   }

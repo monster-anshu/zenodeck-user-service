@@ -1,11 +1,11 @@
-import { middyfy } from "@/lib/internal";
-import schema from "./schema";
-import { formatJSONResponse } from "@/lib/api-gateway";
-import { HttpException } from "@/lib/error";
-import { HttpStatusCode } from "@/types/http";
-import bcrypt from "bcryptjs";
-import { Otp, OtpModel, UserModel } from "@/mongo";
-import { FilterQuery, Types } from "mongoose";
+import { middyfy } from '@/lib/internal';
+import schema from './schema';
+import { formatJSONResponse } from '@/lib/api-gateway';
+import { HttpException } from '@/lib/error';
+import { HttpStatusCode } from '@/types/http';
+import bcrypt from 'bcryptjs';
+import { Otp, OtpModel, UserModel } from '@/mongo';
+import { FilterQuery, Types } from 'mongoose';
 
 export const main = middyfy<typeof schema>(
   async (event) => {
@@ -13,7 +13,7 @@ export const main = middyfy<typeof schema>(
     const session = event.session || {};
 
     if (!session.otp) {
-      throw new HttpException("OTP_NOT_FOUND", HttpStatusCode.BadRequest);
+      throw new HttpException('OTP_NOT_FOUND', HttpStatusCode.BadRequest);
     }
 
     const filter: FilterQuery<Otp> = {
@@ -25,16 +25,16 @@ export const main = middyfy<typeof schema>(
     const otpDoc = await OtpModel.findOne(filter).lean();
 
     if (!otpDoc) {
-      throw new HttpException("INVALID_OTP", HttpStatusCode.Forbidden);
+      throw new HttpException('INVALID_OTP', HttpStatusCode.Forbidden);
     }
 
     delete session.otp;
 
-    if (otpDoc.flow === "CHANGE_PASSWORD") {
+    if (otpDoc.flow === 'CHANGE_PASSWORD') {
       const password = otpDoc.meta.password;
 
       if (!password) {
-        throw new HttpException("INVALID_DATA", HttpStatusCode.Forbidden);
+        throw new HttpException('INVALID_DATA', HttpStatusCode.Forbidden);
       }
 
       const hash = await bcrypt.hash(password, 10);
@@ -47,14 +47,14 @@ export const main = middyfy<typeof schema>(
           $set: {
             password: hash,
           },
-        }
+        },
       );
-    } else if (otpDoc.flow === "FORGOT_PASSWORD") {
+    } else if (otpDoc.flow === 'FORGOT_PASSWORD') {
       const password = otpDoc.meta.password;
       const userId = otpDoc.userId;
 
       if (!password) {
-        throw new HttpException("INVALID_DATA", HttpStatusCode.Forbidden);
+        throw new HttpException('INVALID_DATA', HttpStatusCode.Forbidden);
       }
 
       const hash = await bcrypt.hash(password, 10);
@@ -67,7 +67,7 @@ export const main = middyfy<typeof schema>(
           $set: {
             password: hash,
           },
-        }
+        },
       );
     }
 
@@ -83,5 +83,5 @@ export const main = middyfy<typeof schema>(
   },
   {
     checkAuth: false,
-  }
+  },
 );

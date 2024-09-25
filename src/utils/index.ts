@@ -3,14 +3,14 @@ const typeOf = (o) => Object.prototype.toString.call(o);
 const isObject = (o) =>
   o !== null &&
   !Array.isArray(o) &&
-  typeOf(o).split(" ")[1].slice(0, -1) === "Object";
+  typeOf(o).split(' ')[1].slice(0, -1) === 'Object';
 
 const isPrimitive = (o) => {
   switch (typeof o) {
-    case "object": {
+    case 'object': {
       return false;
     }
-    case "function": {
+    case 'function': {
       return false;
     }
     default: {
@@ -21,7 +21,7 @@ const isPrimitive = (o) => {
 export const getChanges = (previous, current) => {
   if (isPrimitive(previous) && isPrimitive(current)) {
     if (previous === current) {
-      return "";
+      return '';
     }
 
     return current;

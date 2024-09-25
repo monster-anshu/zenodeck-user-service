@@ -1,11 +1,11 @@
-import type { JSONSchema } from "json-schema-to-ts";
+import type { JSONSchema } from 'json-schema-to-ts';
 
 const schema = {
-  type: "object",
+  type: 'object',
   properties: {
-    otp: { type: "string" },
+    otp: { type: 'string' },
   },
-  required: ["otp"] as const,
+  required: ['otp'] as const,
 } satisfies JSONSchema;
 
 export default schema;

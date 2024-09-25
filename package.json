@@ -4,8 +4,9 @@
   "scripts": {
     "db": "tsx --env-file=.env src/mongo/index.ts",
     "deploy": "serverless user-service deploy --stage dev",
-    "package": "serverless user-service package --stage dev",
-    "dev:user": "serverless user-service dev --stage dev"
+    "dev:user": "serverless user-service dev --stage dev",
+    "format": "prettier --write .",
+    "package": "serverless user-service package --stage dev"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.145",

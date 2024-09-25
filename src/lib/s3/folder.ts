@@ -1,8 +1,8 @@
-import { S3_TEMP_BUCKET, S3_USER_UPLOAD } from "@/env";
+import { S3_TEMP_BUCKET, S3_USER_UPLOAD } from '@/env';
 
 export const S3_BUCKET_FOLDER = {
-  PROFILE: "profile",
-  COMPANY_LOGO: "company-logo",
+  PROFILE: 'profile',
+  COMPANY_LOGO: 'company-logo',
 } as const;
 
 export const S3_BUCKETS = {
