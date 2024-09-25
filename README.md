@@ -1,4 +1,4 @@
-# User Service
+# Zenodeck User Service
 
 This project is to manage user and company accounts. It can be access on [https://accounts.himanshu-gunwant.com](https://accounts.himanshu-gunwant.com)
 
@@ -8,3 +8,10 @@ This project is to manage user and company accounts. It can be access on [https:
 1. [Typescript](https://www.typescriptlang.org)
 1. [AWS](https://ui.shadcn.com)
 1. [MongoDB](https://www.mongodb.com)
+
+## Deployment
+
+```bash
+cd services/user
+npx sls deploy --stage dev
+```

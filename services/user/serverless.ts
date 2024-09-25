@@ -5,7 +5,7 @@ import type { BuildOptions } from 'esbuild';
 const serverlessConfiguration: Serverless & {
   build: unknown;
 } = {
-  service: 'user-service',
+  service: 'zenodeck-user-service',
 
   frameworkVersion: '4',
   useDotenv: true,
