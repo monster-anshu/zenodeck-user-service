@@ -4,9 +4,13 @@ import {
   CompanyProductModel,
   CompanyUser,
   CompanyUserModel,
+  CurrentPlan,
+  CurrentPlanAddon,
+  PackageModel,
   UserCompany,
 } from '@/mongo';
 import { FilterQuery, Types } from 'mongoose';
+import { PackageService } from './package.service';
 
 export class CompanyService {
   static async get(userId: string, product?: Product): Promise<UserCompany[]> {
@@ -97,17 +101,78 @@ export class CompanyService {
   static async addProduct({
     companyId,
     productId,
+    plan,
   }: {
     companyId: string;
     productId: Product;
     plan?: string;
     userId: string;
   }) {
+    let selectedPackage;
+
+    if (plan) {
+      selectedPackage = await PackageModel.findOne({
+        key: plan,
+        productId: productId,
+        status: 'ACTIVE',
+      }).lean();
+    }
+
+    if (!selectedPackage) {
+      selectedPackage = await PackageModel.findOne({
+        isDefaultPackage: true,
+        productId: productId,
+        status: 'ACTIVE',
+      }).lean();
+    }
+
+    const startDate = new Date();
+    const endDate = new Date(startDate);
+    const TRIAL_DURATION = 14;
+
+    endDate.setDate(
+      endDate.getDate() + (selectedPackage?.trialDuration || TRIAL_DURATION),
+    );
+
+    const addons: CurrentPlanAddon[] = [];
+
+    if (selectedPackage) {
+      const list = await PackageService.getAddons(
+        productId as Product,
+        selectedPackage._id.toString(),
+        'AGENT',
+      );
+
+      list.forEach((addon) => {
+        addons.push({
+          addonId: addon._id,
+          quantity: 1,
+          type: addon.type!,
+          price: addon.price,
+        } as CurrentPlanAddon);
+      });
+    }
+
     const companyProduct = await CompanyProductModel.create({
       companyId: companyId,
       status: 'ACTIVE',
       productId: productId,
+      currentPlan: selectedPackage
+        ? ({
+            packageId: selectedPackage._id,
+            addons,
+            billingFrequency: 'MONTHLY',
+            startDate,
+            expiryDate: selectedPackage.isFreemiumPackage ? null : endDate,
+            billingDetails: null,
+            isRecurring: false,
+            totalAmount: 0,
+            isTrialPlan: selectedPackage.isFreemiumPackage ? false : true,
+            isFreemiumPackage: selectedPackage.isFreemiumPackage ? true : false,
+          } as CurrentPlan)
+        : null,
     });
+
     return companyProduct;
   }
 }
