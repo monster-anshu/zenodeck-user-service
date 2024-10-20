@@ -169,6 +169,7 @@ export class CompanyService {
             totalAmount: 0,
             isTrialPlan: selectedPackage.isFreemiumPackage ? false : true,
             isFreemiumPackage: selectedPackage.isFreemiumPackage ? true : false,
+            packagePrice : selectedPackage.price
           } as CurrentPlan)
         : null,
     });
