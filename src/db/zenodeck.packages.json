@@ -1,0 +1,587 @@
+[
+  {
+    "_id": {
+      "$oid": "653108490f04449d11805604"
+    },
+    "key": "PREMIUM",
+    "displayName": "Premium",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 0,
+        "inr": 0
+      },
+      "monthly": {
+        "usd": 0,
+        "inr": 0
+      }
+    },
+    "features": [
+      {
+        "feature": "BOT",
+        "quantity": 10
+      },
+      {
+        "feature": "TEAMS",
+        "quantity": -1
+      },
+      {
+        "feature": "CHAT_SESSIONS",
+        "quantity": 4000
+      },
+      {
+        "feature": "ROLES",
+        "quantity": -1
+      },
+      {
+        "feature": "BUSINESS_HOURS",
+        "quantity": -1
+      },
+      {
+        "feature": "CUSTOM_FIELDS",
+        "quantity": -1
+      },
+      {
+        "feature": "TICKETS",
+        "quantity": -1
+      },
+      {
+        "feature": "TAGS",
+        "quantity": -1
+      },
+      {
+        "feature": "AUTO_RESOLVE",
+        "quantity": 1
+      },
+      {
+        "feature": "CHAT_GPT",
+        "quantity": 1
+      },
+      {
+        "feature": "IP_BLOCKING"
+      },
+      {
+        "feature": "WEBHOOK"
+      },
+      {
+        "feature": "BRANDING"
+      },
+      {
+        "feature": "BUSINESS"
+      },
+      {
+        "feature": "CHAT_HISTORY",
+        "months": 60
+      },
+      {
+        "feature": "FAQ",
+        "quantity": -1
+      },
+      {
+        "feature": "QUICK_REPLIES",
+        "quantity": -1
+      },
+      {
+        "feature": "DASHBOARD"
+      },
+      {
+        "feature": "PLUGINS",
+        "quantity": -1
+      },
+      {
+        "feature": "WEB_WIDGET",
+        "quantity": -1
+      },
+      {
+        "feature": "FACEBOOK"
+      },
+      {
+        "feature": "INSTAGRAM"
+      },
+      {
+        "feature": "TELEGRAM"
+      },
+      {
+        "feature": "LINE"
+      },
+      {
+        "feature": "FILTER",
+        "quantity": -1
+      },
+      {
+        "feature": "CSAT",
+        "_id": {
+          "$oid": "65a8d6147f6a058d301e6eb0"
+        }
+      },
+      {
+        "feature": "MOBILE_WIDGET",
+        "quantity": 1,
+        "_id": {
+          "$oid": "65b0f28301d8db65ff1e7422"
+        }
+      },
+      {
+        "feature": "CHAT_APP_FILES"
+      },
+      {
+        "feature": "CUSTOMER_FIELDS"
+      },
+      {
+        "feature": "LEAD_SQUARED"
+      }
+    ],
+    "addons": [
+      {
+        "addonId": {
+          "$oid": "653106ec0f04449d11805602"
+        }
+      },
+      {
+        "addonId": {
+          "$oid": "6540868a5f0e838bd832792b"
+        },
+        "quantity": 1
+      }
+    ],
+    "productId": "CHAT_APP",
+    "isDefaultPackage": true,
+    "priority": 3
+  },
+  {
+    "_id": {
+      "$oid": "6682ab20230c1fa444fcecf3"
+    },
+    "key": "PRO",
+    "displayName": "Pro",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 0,
+        "inr": 0
+      },
+      "monthly": {
+        "usd": 0,
+        "inr": 0
+      }
+    },
+    "features": [
+      {
+        "feature": "PROJECT_ACCESS"
+      },
+      {
+        "feature": "EMAIL_NOTIFICATIONS"
+      },
+      {
+        "feature": "CUSTOM_FIELDS"
+      },
+      {
+        "feature": "CUSTOM_ISSUE_TYPE"
+      }
+    ],
+    "addons": [],
+    "productId": "PROJECTS",
+    "priority": 3,
+    "trialDuration": 30,
+    "isDefaultPackage": true
+  },
+  {
+    "_id": {
+      "$oid": "653108490f04449d11805603"
+    },
+    "key": "STARTER",
+    "displayName": "Starter",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 0,
+        "inr": 0
+      },
+      "monthly": {
+        "usd": 0,
+        "inr": 0
+      }
+    },
+    "features": [
+      {
+        "feature": "BOT",
+        "quantity": 2
+      },
+      {
+        "feature": "CHAT_SESSIONS",
+        "quantity": 1000
+      },
+      {
+        "feature": "FAQ",
+        "quantity": -1
+      },
+      {
+        "feature": "QUICK_REPLIES",
+        "quantity": -1
+      },
+      {
+        "feature": "DASHBOARD"
+      },
+      {
+        "feature": "PLUGINS",
+        "quantity": -1
+      },
+      {
+        "feature": "CHAT_HISTORY",
+        "months": 6
+      },
+      {
+        "feature": "WEB_WIDGET",
+        "quantity": 1
+      }
+    ],
+    "addons": [
+      {
+        "addonId": {
+          "$oid": "653106ec0f04449d11805600"
+        }
+      },
+      {
+        "addonId": {
+          "$oid": "6540868a5f0e838bd832792b"
+        },
+        "quantity": 1
+      }
+    ],
+    "productId": "CHAT_APP",
+    "priority": 1
+  },
+  {
+    "_id": {
+      "$oid": "653931bca6a2569f62b75a57"
+    },
+    "key": "PRO",
+    "displayName": "Pro",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 0,
+        "inr": 0
+      },
+      "monthly": {
+        "usd": 0,
+        "inr": 0
+      }
+    },
+    "features": [
+      {
+        "feature": "BOT",
+        "quantity": 5
+      },
+      {
+        "feature": "TEAMS",
+        "quantity": -1
+      },
+      {
+        "feature": "CHAT_SESSIONS",
+        "quantity": 2000
+      },
+      {
+        "feature": "BUSINESS_HOURS",
+        "quantity": -1
+      },
+      {
+        "feature": "TAGS",
+        "quantity": -1
+      },
+      {
+        "feature": "CHAT_GPT",
+        "quantity": 1
+      },
+      {
+        "feature": "BRANDING"
+      },
+      {
+        "feature": "FAQ",
+        "quantity": -1
+      },
+      {
+        "feature": "QUICK_REPLIES",
+        "quantity": -1
+      },
+      {
+        "feature": "DASHBOARD"
+      },
+      {
+        "feature": "PLUGINS",
+        "quantity": -1
+      },
+      {
+        "feature": "CHAT_HISTORY",
+        "months": 12
+      },
+      {
+        "feature": "WEB_WIDGET",
+        "quantity": 1
+      },
+      {
+        "feature": "FACEBOOK"
+      },
+      {
+        "feature": "INSTAGRAM"
+      },
+      {
+        "feature": "CSAT",
+        "_id": {
+          "$oid": "65a8d6147f6a058d301e6eb0"
+        }
+      },
+      {
+        "feature": "MOBILE_WIDGET",
+        "quantity": 1,
+        "_id": {
+          "$oid": "65b0f28301d8db65ff1e7422"
+        }
+      },
+      {
+        "feature": "CHAT_APP_FILES"
+      },
+      {
+        "feature": "LEAD_SQUARED"
+      }
+    ],
+    "addons": [
+      {
+        "addonId": {
+          "$oid": "653106ec0f04449d11805601"
+        }
+      },
+      {
+        "addonId": {
+          "$oid": "6540868a5f0e838bd832792b"
+        },
+        "quantity": 1
+      }
+    ],
+    "productId": "CHAT_APP",
+    "priority": 2
+  },
+  {
+    "_id": {
+      "$oid": "6642016dc3cac1eabeac828c"
+    },
+    "key": "FREEMIUM",
+    "displayName": "Freemium",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 0,
+        "inr": 0
+      },
+      "monthly": {
+        "usd": 0,
+        "inr": 0
+      }
+    },
+    "features": [
+      {
+        "feature": "ONE_TO_ONE_MEETINGS",
+        "quantity": 1
+      },
+      {
+        "feature": "CUSTOMIZE_BRANDING_BASIC"
+      },
+      {
+        "feature": "CALENDARS",
+        "quantity": 1
+      }
+    ],
+    "addons": [],
+    "productId": "BOOKINGS",
+    "priority": 1,
+    "isFreemiumPackage": true
+  },
+  {
+    "_id": {
+      "$oid": "6642016dc3cac1eabeac828d"
+    },
+    "key": "STARTER",
+    "displayName": "Starter",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 0,
+        "inr": 0
+      },
+      "monthly": {
+        "usd": 0,
+        "inr": 0
+      }
+    },
+    "features": [
+      {
+        "feature": "ONE_TO_ONE_MEETINGS",
+        "quantity": -1
+      },
+      {
+        "feature": "GROUP_MEETINGS",
+        "quantity": -1
+      },
+      {
+        "feature": "COLLECTIVE_MEETINGS",
+        "quantity": -1
+      },
+      {
+        "feature": "CUSTOMIZE_CONFIRMATION_PAGE"
+      },
+      {
+        "feature": "ROLES"
+      },
+      {
+        "feature": "CALENDARS",
+        "quantity": 6
+      },
+      {
+        "feature": "CUSTOMIZE_BRANDING_LAYOUT"
+      },
+      {
+        "feature": "ZOOM_INTEGRATION"
+      },
+      {
+        "feature": "WEBHOOK",
+        "quantity": 1
+      },
+      {
+        "feature": "DASHBOARD"
+      },
+      {
+        "feature": "PAYMENTS"
+      }
+    ],
+    "addons": [],
+    "productId": "BOOKINGS",
+    "priority": 2,
+    "trialDuration": 30
+  },
+  {
+    "_id": {
+      "$oid": "6642016dc3cac1eabeac828e"
+    },
+    "key": "PRO",
+    "displayName": "Pro",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 0,
+        "inr": 0
+      },
+      "monthly": {
+        "usd": 0,
+        "inr": 0
+      }
+    },
+    "features": [
+      {
+        "feature": "ONE_TO_ONE_MEETINGS",
+        "quantity": -1
+      },
+      {
+        "feature": "GROUP_MEETINGS",
+        "quantity": -1
+      },
+      {
+        "feature": "ROUND_ROBIN_MEETINGS",
+        "quantity": -1
+      },
+      {
+        "feature": "COLLECTIVE_MEETINGS",
+        "quantity": -1
+      },
+      {
+        "feature": "CUSTOMIZE_CONFIRMATION_PAGE"
+      },
+      {
+        "feature": "ROLES"
+      },
+      {
+        "feature": "CALENDARS",
+        "quantity": 6
+      },
+      {
+        "feature": "CUSTOMIZE_BRANDING_LAYOUT"
+      },
+      {
+        "feature": "ZOOM_INTEGRATION"
+      },
+      {
+        "feature": "DASHBOARD"
+      },
+      {
+        "feature": "PAYMENTS"
+      },
+      {
+        "feature": "CUSTOMIZE_NOTIFICATION_TEMPLATE"
+      },
+      {
+        "feature": "ORUFY_BRANDING"
+      },
+      {
+        "feature": "HOLIDAYS",
+        "quantity": -1
+      },
+      {
+        "feature": "WEBHOOK",
+        "quantity": 10
+      },
+      {
+        "feature": "DASHBOARD"
+      }
+    ],
+    "addons": [],
+    "productId": "BOOKINGS",
+    "priority": 3,
+    "trialDuration": 30,
+    "isDefaultPackage": true
+  },
+  {
+    "_id": {
+      "$oid": "6682ab20230c1fa444fcecf1"
+    },
+    "key": "FREEMIUM",
+    "displayName": "Freemium",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 0,
+        "inr": 0
+      },
+      "monthly": {
+        "usd": 0,
+        "inr": 0
+      }
+    },
+    "features": [],
+    "addons": [],
+    "productId": "PROJECTS",
+    "priority": 1,
+    "isFreemiumPackage": true
+  },
+  {
+    "_id": {
+      "$oid": "6682ab20230c1fa444fcecf2"
+    },
+    "key": "STARTER",
+    "displayName": "Starter",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 0,
+        "inr": 0
+      },
+      "monthly": {
+        "usd": 0,
+        "inr": 0
+      }
+    },
+    "features": [],
+    "addons": [],
+    "productId": "PROJECTS",
+    "priority": 2,
+    "trialDuration": 30
+  }
+]

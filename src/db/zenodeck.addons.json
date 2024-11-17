@@ -1,0 +1,346 @@
+[
+  {
+    "_id": {
+      "$oid": "653106ec0f04449d11805602"
+    },
+    "key": "STORAGE_20GB",
+    "displayName": "20gb Storage",
+    "type": "STORAGE",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 150,
+        "inr": 12000
+      },
+      "monthly": {
+        "usd": 15,
+        "inr": 1200
+      }
+    },
+    "configuration": {
+      "storageAmount": 20
+    },
+    "productId": "CHAT_APP"
+  },
+  {
+    "_id": {
+      "$oid": "6540868a5f0e838bd832792b"
+    },
+    "key": "WHATSAPP_WIDGET",
+    "displayName": "Whatsapp",
+    "type": "WHATSAPP",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 208,
+        "inr": 8990
+      },
+      "monthly": {
+        "usd": 12,
+        "inr": 1299
+      }
+    },
+    "configuration": {
+      "whatsAppCount": 1
+    },
+    "productId": "CHAT_APP"
+  },
+  {
+    "_id": {
+      "$oid": "653106ec0f04449d118055ff"
+    },
+    "key": "CHAT_AGENT",
+    "displayName": "Agent",
+    "type": "AGENT",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 138,
+        "inr": 11988
+      },
+      "monthly": {
+        "usd": 14,
+        "inr": 1199
+      }
+    },
+    "configuration": {
+      "agentCount": 1
+    },
+    "packageIds": [
+      {
+        "$oid": "653108490f04449d11805604"
+      }
+    ],
+    "productId": "CHAT_APP"
+  },
+  {
+    "_id": {
+      "$oid": "653106ec0f04449d11805601"
+    },
+    "key": "STORAGE_10GB",
+    "displayName": "10gb Storage",
+    "type": "STORAGE",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 90,
+        "inr": 7000
+      },
+      "monthly": {
+        "usd": 9,
+        "inr": 700
+      }
+    },
+    "configuration": {
+      "storageAmount": 10
+    },
+    "productId": "CHAT_APP"
+  },
+  {
+    "_id": {
+      "$oid": "6541e34659e3b3629efc5163"
+    },
+    "key": "CHAT_AGENT",
+    "displayName": "Agent",
+    "type": "AGENT",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 90,
+        "inr": 5988
+      },
+      "monthly": {
+        "usd": 9,
+        "inr": 599
+      }
+    },
+    "configuration": {
+      "agentCount": 1
+    },
+    "packageIds": [
+      {
+        "$oid": "653931bca6a2569f62b75a57"
+      }
+    ],
+    "productId": "CHAT_APP"
+  },
+  {
+    "_id": {
+      "$oid": "6682ab95230c1fa444fcecf4"
+    },
+    "key": "AGENT",
+    "displayName": "Agent",
+    "type": "AGENT",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 0,
+        "inr": 0
+      },
+      "monthly": {
+        "usd": 0,
+        "inr": 0
+      }
+    },
+    "configuration": {
+      "agentCount": 20
+    },
+    "packageIds": [
+      {
+        "$oid": "6682ab20230c1fa444fcecf1"
+      }
+    ],
+    "productId": "PROJECTS"
+  },
+  {
+    "_id": {
+      "$oid": "653106ec0f04449d11805600"
+    },
+    "key": "STORAGE_5GB",
+    "displayName": "5gb Storage",
+    "type": "STORAGE",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 50,
+        "inr": 4000
+      },
+      "monthly": {
+        "usd": 5,
+        "inr": 400
+      }
+    },
+    "configuration": {
+      "storageAmount": 5
+    },
+    "productId": "CHAT_APP"
+  },
+  {
+    "_id": {
+      "$oid": "66442121c3cac1eabeac828f"
+    },
+    "key": "AGENT",
+    "displayName": "Agent",
+    "type": "AGENT",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 0,
+        "inr": 0
+      },
+      "monthly": {
+        "usd": 0,
+        "inr": 0
+      }
+    },
+    "configuration": {
+      "agentCount": 1
+    },
+    "packageIds": [
+      {
+        "$oid": "6642016dc3cac1eabeac828c"
+      }
+    ],
+    "productId": "BOOKINGS"
+  },
+  {
+    "_id": {
+      "$oid": "66442121c3cac1eabeac8291"
+    },
+    "key": "AGENT",
+    "displayName": "Agent",
+    "type": "AGENT",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 90,
+        "inr": 5988
+      },
+      "monthly": {
+        "usd": 9,
+        "inr": 599
+      }
+    },
+    "configuration": {
+      "agentCount": 1
+    },
+    "packageIds": [
+      {
+        "$oid": "6642016dc3cac1eabeac828e"
+      }
+    ],
+    "productId": "BOOKINGS"
+  },
+  {
+    "_id": {
+      "$oid": "6682ab95230c1fa444fcecf5"
+    },
+    "key": "AGENT",
+    "displayName": "Agent",
+    "type": "AGENT",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 98,
+        "inr": 4988
+      },
+      "monthly": {
+        "usd": 9,
+        "inr": 499
+      }
+    },
+    "configuration": {
+      "agentCount": 1
+    },
+    "packageIds": [
+      {
+        "$oid": "6682ab20230c1fa444fcecf2"
+      }
+    ],
+    "productId": "PROJECTS"
+  },
+  {
+    "_id": {
+      "$oid": "6541e33d59e3b3629efc5162"
+    },
+    "key": "CHAT_AGENT",
+    "displayName": "Agent",
+    "type": "AGENT",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 98,
+        "inr": 4988
+      },
+      "monthly": {
+        "usd": 9,
+        "inr": 499
+      }
+    },
+    "configuration": {
+      "agentCount": 1
+    },
+    "packageIds": [
+      {
+        "$oid": "653108490f04449d11805603"
+      }
+    ],
+    "productId": "CHAT_APP"
+  },
+  {
+    "_id": {
+      "$oid": "66442121c3cac1eabeac8290"
+    },
+    "key": "AGENT",
+    "displayName": "Agent",
+    "type": "AGENT",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 98,
+        "inr": 4988
+      },
+      "monthly": {
+        "usd": 9,
+        "inr": 499
+      }
+    },
+    "configuration": {
+      "agentCount": 1
+    },
+    "packageIds": [
+      {
+        "$oid": "6642016dc3cac1eabeac828d"
+      }
+    ],
+    "productId": "BOOKINGS"
+  },
+  {
+    "_id": {
+      "$oid": "6682ab95230c1fa444fcecf6"
+    },
+    "key": "AGENT",
+    "displayName": "Agent",
+    "type": "AGENT",
+    "status": "ACTIVE",
+    "price": {
+      "annual": {
+        "usd": 90,
+        "inr": 5988
+      },
+      "monthly": {
+        "usd": 9,
+        "inr": 599
+      }
+    },
+    "configuration": {
+      "agentCount": 1
+    },
+    "packageIds": [
+      {
+        "$oid": "6682ab20230c1fa444fcecf3"
+      }
+    ],
+    "productId": "PROJECTS"
+  }
+]
