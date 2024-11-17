@@ -169,7 +169,9 @@ export class CompanyService {
             totalAmount: 0,
             isTrialPlan: selectedPackage.isFreemiumPackage ? false : true,
             isFreemiumPackage: selectedPackage.isFreemiumPackage ? true : false,
-            packagePrice : selectedPackage.price
+            packagePrice: selectedPackage.price,
+            currencyCode: 'INR',
+            features: selectedPackage.features,
           } as CurrentPlan)
         : null,
     });
