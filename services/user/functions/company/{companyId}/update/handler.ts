@@ -5,6 +5,7 @@ import { S3_BUCKETS } from '@/lib/s3/folder';
 import { CompanyModel } from '@/mongo';
 import { Types } from 'mongoose';
 import { formatJSONResponse } from '@/lib/api-gateway';
+import { deleteFile } from '@/lib/s3/delete';
 
 export const main = middyfy<typeof schema>(async (event) => {
   const { companyName, companyLogo } = event.body;
@@ -34,16 +35,23 @@ export const main = middyfy<typeof schema>(async (event) => {
         companyName,
       },
     },
-    {
-      new: true,
-    },
   ).lean();
+
+  if (companyInfo?.companyLogo) {
+    await deleteFile({
+      bucketKey: 'USER_UPLOAD',
+      url: companyInfo.companyLogo,
+    });
+  }
 
   if (!companyInfo) {
     return formatJSONResponse({
       isSuccess: false,
     });
   }
+
+  companyInfo.companyLogo = companyLogoToUse;
+  companyInfo.companyName = companyName;
 
   return formatJSONResponse({
     isSuccess: true,

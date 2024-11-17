@@ -31,7 +31,7 @@ export const moveTempFileToAnotherBucket = async ({
   }
   let destinationKey = prependKey;
   if (prependKey && !prependKey.endsWith('/')) {
-    destinationKey + '/';
+    destinationKey += '/';
   }
   destinationKey += sourceKey;
   const copyCommand = new CopyObjectCommand({
