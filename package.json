@@ -18,7 +18,7 @@
     "@types/node": "^22.5.5",
     "@types/serverless": "^3.12.22",
     "prettier": "^3.3.3",
-    "serverless": "^4.4.6",
+    "serverless": "^4.4.13",
     "serverless-deployment-bucket": "^1.6.0",
     "serverless-openapi-documenter": "^0.0.104",
     "serverless-prune-plugin": "^2.0.2",
