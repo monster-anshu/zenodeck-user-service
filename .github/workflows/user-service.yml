@@ -19,6 +19,6 @@ jobs:
           node-version: 20
 
       - name: Install
-        run: npm i -g serverless && npm ci --legacy-peer-deps
+        run: npm i -g serverless@3 && npm ci --legacy-peer-deps
 
-      - run: cd services/user && sls deploy --stage {{ env.STAGE }}
+      - run: sls deploy --stage {{ env.STAGE }}
