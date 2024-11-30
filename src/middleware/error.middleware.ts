@@ -5,7 +5,6 @@ import middy from '@middy/core';
 export const errorMiddleware = () => {
   const onError = async (request: middy.Request) => {
     const { error } = request;
-    console.log('Error : ', error);
     if (error instanceof HttpException) {
       request.response = {
         ...request.response,
@@ -21,6 +20,7 @@ export const errorMiddleware = () => {
         ),
       };
     } else {
+      console.log('Error : ', error);
       request.response = {
         ...request.response,
         ...formatJSONResponse(

@@ -2,15 +2,18 @@ import { Serverless } from 'serverless/aws';
 import * as functions from './functions';
 import type { BuildOptions } from 'esbuild';
 
-const serverlessConfiguration: Serverless & {
-  build: unknown;
-} = {
+const serverlessConfiguration: Serverless = {
   service: 'zenodeck-user-service',
 
-  frameworkVersion: '4',
+  frameworkVersion: '3',
   useDotenv: true,
 
-  plugins: ['serverless-deployment-bucket', 'serverless-prune-plugin'],
+  plugins: [
+    'serverless-deployment-bucket',
+    'serverless-prune-plugin',
+    'serverless-esbuild',
+    'serverless-offline',
+  ],
 
   custom: {
     prune: {
@@ -20,17 +23,15 @@ const serverlessConfiguration: Serverless & {
     logRetentionInDays: {
       dev: 1,
     },
-    apiPrefix: '/api/v1/user',
-  },
-
-  build: {
     esbuild: {
       external: ['@aws-sdk/*'],
       sourcemap: false,
       minify: true,
       bundle: true,
       target: ['node20'],
+      platform: 'node',
     } as BuildOptions,
+    apiPrefix: '/api/v1/user',
   },
 
   provider: {
