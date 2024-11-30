@@ -11,8 +11,8 @@ const serverlessConfiguration: Serverless = {
   plugins: [
     'serverless-deployment-bucket',
     'serverless-prune-plugin',
-    'serverless-esbuild',
     'serverless-offline',
+    'serverless-esbuild',
   ],
 
   custom: {
@@ -23,6 +23,7 @@ const serverlessConfiguration: Serverless = {
     logRetentionInDays: {
       dev: 1,
     },
+    apiPrefix: '/api/v1/user',
     esbuild: {
       external: ['@aws-sdk/*'],
       sourcemap: false,
@@ -31,9 +32,7 @@ const serverlessConfiguration: Serverless = {
       target: ['node20'],
       platform: 'node',
     } as BuildOptions,
-    apiPrefix: '/api/v1/user',
   },
-
   provider: {
     name: 'aws',
     runtime: 'nodejs20.x',

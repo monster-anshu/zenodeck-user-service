@@ -19,6 +19,21 @@ jobs:
           node-version: 20
 
       - name: Install
-        run: npm ci --legacy-peer-deps
+        run: npm i -g serverless@3 && npm ci
 
-      - run: npx sls deploy --stage {{ env.STAGE }}
+      - name: Deploy
+        run: sls zenodeck-user-service:deploy
+        env:
+          BASE_DOMAIN: ${{ secrets.BASE_DOMAIN }}
+          ENCRYPTION_IV: ${{ secrets.ENCRYPTION_IV }}
+          ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          SESSION_JWT_SECRET: ${{ secrets.SESSION_JWT_SECRET }}
+          STAGE: ${{ secrets.STAGE }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          SERVERLESS_DEPLOYMENT_BUCKET: ${{ secrets.SERVERLESS_DEPLOYMENT_BUCKET }}
+          S3_TEMP_BUCKET: ${{ secrets.S3_TEMP_BUCKET }}
+          S3_USER_UPLOAD: ${{ secrets.S3_USER_UPLOAD }}
+          S3_HOST: ${{ secrets.S3_HOST }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
