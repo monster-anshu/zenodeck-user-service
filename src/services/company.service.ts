@@ -95,7 +95,7 @@ export class CompanyService {
         upsert: true,
         new: true,
       },
-    );
+    ).lean();
   }
 
   static async addProduct({

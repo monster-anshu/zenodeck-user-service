@@ -5,6 +5,7 @@ import { Session } from '@/types';
 const sessionCompanyKeyMap = {
   BOOKINGS: 'bookingsApp',
   PROJECTS: 'projectsApp',
+  CHAT_APP: 'chatApp',
 } as const;
 
 export const setSessionCompanyId = (
@@ -38,7 +39,9 @@ export const setAllProductCompanyId = (
 
   for (const company of companies) {
     for (const productId of PRODUCT_IDS) {
-      setSessionCompanyId(session, productId, company._id.toString());
+      if (company.allowedProductIds.includes(productId)) {
+        setSessionCompanyId(session, productId, company._id.toString());
+      }
     }
   }
 };
