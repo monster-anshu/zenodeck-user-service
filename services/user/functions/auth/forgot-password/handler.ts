@@ -48,8 +48,12 @@ export const main = middyfy<typeof schema>(
 
     await sendEmail({
       to: userInfo.emailId,
-      html: `Your otp for forgot password is ${otpDoc.otp}`,
-      subject: 'Forgot Password',
+      template: {
+        key: 'PASSWORD_RESET',
+        eventData: {
+          otp: otpDoc.otp,
+        },
+      },
     });
 
     session.otp = {
