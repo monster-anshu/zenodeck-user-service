@@ -28,5 +28,8 @@ const CompanyUserSchema = new Schema({
   role: String,
 });
 
-export const CompanyUserModel = model('companyUser', CompanyUserSchema);
+export const CompanyUserModel = model(
+  'companyUserPermission',
+  CompanyUserSchema,
+);
 export type CompanyUser = InferSchemaType<typeof CompanyUserSchema>;

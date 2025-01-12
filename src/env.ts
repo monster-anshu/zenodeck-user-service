@@ -12,3 +12,6 @@ export const SESSION_COOKIE_SECRET = process.env
 export const S3_TEMP_BUCKET = process.env.S3_TEMP_BUCKET as string;
 export const S3_HOST = process.env.S3_HOST as string;
 export const S3_USER_UPLOAD = process.env.S3_USER_UPLOAD as string;
+
+export const CAMPAIGN_APP_API_URI = process.env.CAMPAIGN_API_DOMAIN as string;
+export const CAMPAIGN_APP_API_KEY = process.env.CAMPAIGN_APP_API_KEY as string;
