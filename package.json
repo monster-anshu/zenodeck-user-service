@@ -6,6 +6,7 @@
     "db:seed": "tsx --env-file=.env src/db/seed.ts",
     "deploy": "serverless zenodeck-user-service deploy --stage dev",
     "dev:user": "serverless zenodeck-user-service:offline",
+    "env": "ln .env $PWD/services/user/.env",
     "format": "prettier --write .",
     "package": "serverless zenodeck-user-service package --stage dev"
   },

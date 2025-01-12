@@ -26,7 +26,6 @@ export class ProductService {
     if (!apiUrl) {
       return;
     }
-
     const res = await fetch(apiUrl, {
       method: 'POST',
       headers: {

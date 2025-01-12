@@ -32,6 +32,7 @@ const serverlessConfiguration: Serverless = {
       target: ['node20'],
       platform: 'node',
     } as BuildOptions,
+    'serverless-offline': {},
   },
   provider: {
     name: 'aws',
