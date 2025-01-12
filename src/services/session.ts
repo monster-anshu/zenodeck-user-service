@@ -6,6 +6,7 @@ const sessionCompanyKeyMap = {
   BOOKINGS: 'bookingsApp',
   PROJECTS: 'projectsApp',
   CHAT_APP: 'chatApp',
+  CAMPAIGN: 'campaignApp',
 } as const;
 
 export const setSessionCompanyId = (

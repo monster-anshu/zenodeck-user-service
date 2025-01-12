@@ -5,8 +5,9 @@ import { HttpStatusCode } from '@/types/http';
 import bcrypt from 'bcryptjs';
 import { setSessionCompanyId } from '@/services/session';
 import { formatJSONResponse } from '@/lib/api-gateway';
-import { CompanyModel, CompanyProductModel, UserModel } from '@/mongo';
+import { CompanyModel, UserModel } from '@/mongo';
 import { CompanyService } from '@/services/company.service';
+import { ProductService } from '@/services/product.service';
 
 export const main = middyfy<typeof schema>(
   async (event) => {
@@ -44,6 +45,7 @@ export const main = middyfy<typeof schema>(
     });
     session.userId = userInfo._id.toString();
 
+    // TODO : add email verification before creating company
     let companyInfo;
     let productInfo;
 
@@ -67,6 +69,13 @@ export const main = middyfy<typeof schema>(
         userId: userInfo._id.toString(),
         products: [productId],
         role: 'SUPER_ADMIN',
+      });
+
+      await ProductService.populateDefaultAppData({
+        companyId: companyInfo._id.toString(),
+        companyName: companyInfo.companyName,
+        productId: productId,
+        userId: userInfo._id.toString(),
       });
 
       setSessionCompanyId(

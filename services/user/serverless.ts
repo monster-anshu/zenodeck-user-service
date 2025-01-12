@@ -32,6 +32,7 @@ const serverlessConfiguration: Serverless = {
       target: ['node20'],
       platform: 'node',
     } as BuildOptions,
+    'serverless-offline': {},
   },
   provider: {
     name: 'aws',
@@ -48,6 +49,8 @@ const serverlessConfiguration: Serverless = {
       API_PREFIX: '${self:custom.apiPrefix}',
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       BASE_DOMAIN: '${env:BASE_DOMAIN}',
+      CAMPAIGN_APP_API_KEY: '${env:CAMPAIGN_APP_API_KEY}',
+      CAMPAIGN_APP_API_URI: '${env:CAMPAIGN_APP_API_URI}',
       ENCRYPTION_IV: '${env:ENCRYPTION_IV}',
       ENCRYPTION_KEY: '${env:ENCRYPTION_KEY}',
       MONGO_URI: '${env:MONGO_URI}',

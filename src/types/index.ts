@@ -19,6 +19,9 @@ export type Session = {
     flow: OtpFlow;
     id: string;
   };
+  campaignApp?: {
+    companyId: string;
+  };
 };
 
 export type AwsFunction = AwsFunctionHandler | AwsFunctionImage;
