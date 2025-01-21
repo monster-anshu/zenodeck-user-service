@@ -5,6 +5,7 @@ import { Types } from 'mongoose';
 import { formatJSONResponse } from '@/lib/api-gateway';
 import { CompanyService } from '@/services/company.service';
 import { setSessionCompanyId } from '@/services/session';
+import { ProductService } from '@/services/product.service';
 
 export const main = middyfy<typeof schema>(async (event) => {
   const { productId } = event.body;
@@ -42,6 +43,13 @@ export const main = middyfy<typeof schema>(async (event) => {
       userId: userId,
       products: [productInfo.productId],
       role: 'SUPER_ADMIN',
+    });
+
+    await ProductService.populateDefaultAppData({
+      companyId: companyInfo._id.toString(),
+      companyName: companyInfo.companyName,
+      productId: productId,
+      userId: userId,
     });
   }
 
