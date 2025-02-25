@@ -2,7 +2,7 @@ import './connection';
 
 import { InferSchemaType, model, Schema } from 'mongoose';
 
-const OTP_FLOWS = ['CHANGE_PASSWORD', 'FORGOT_PASSWORD'] as const;
+const OTP_FLOWS = ['CHANGE_PASSWORD', 'FORGOT_PASSWORD', 'REGISTER'] as const;
 export type OtpFlow = (typeof OTP_FLOWS)[number];
 
 const OtpSchema = new Schema({

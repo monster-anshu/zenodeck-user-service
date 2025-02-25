@@ -2,6 +2,10 @@ import { User as MongoUser } from '@/mongo';
 
 type User = Pick<MongoUser, 'firstName' | 'lastName' | 'emailId'>;
 
+const combineName = (...args: (string | undefined | null)[]) => {
+  return args.filter((cur) => cur).join(' ');
+};
+
 type TemplateData<Extra extends object> = {
   user?: User | null;
   eventData: Extra;
@@ -21,6 +25,10 @@ type PasswordResetData = TemplateData<{
   otp: string;
 }>;
 
+type RegisterData = TemplateData<{
+  otp: string;
+}>;
+
 export type TemplateEventData = Pick<
   InvitationMailData | PasswordChangeData | PasswordResetData,
   'eventData'
@@ -31,7 +39,7 @@ export const emailTemplates = {
     return {
       subject: 'Invitation',
       html: `
-Hello ${[user?.firstName, user?.lastName].filter((cur) => cur).join(' ')},
+Hello ${combineName(user?.firstName, user?.lastName)},
 <br>
 You are invited to ${eventData.companyName} from ${eventData.productId}.
 Accept invite from <p>${eventData.acceptInvitationLink}</p>
@@ -48,6 +56,12 @@ Accept invite from <p>${eventData.acceptInvitationLink}</p>
     return {
       subject: 'Password Reset',
       html: `Your otp for forgot password is ${eventData.otp}`,
+    };
+  },
+  REGISTER: ({ eventData, user }: RegisterData) => {
+    return {
+      subject: 'Registration',
+      html: `Hi ${combineName(user?.firstName, user?.lastName)}, Your otp for registration is ${eventData.otp}`,
     };
   },
 };

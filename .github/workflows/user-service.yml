@@ -22,14 +22,13 @@ jobs:
         run: npm i -g serverless@3 && npm ci
 
       - name: Deploy
-        run: sls zenodeck-user-service:deploy
+        run: sls zenodeck-user-service:deploy --stage dev
         env:
           BASE_DOMAIN: ${{ secrets.BASE_DOMAIN }}
           ENCRYPTION_IV: ${{ secrets.ENCRYPTION_IV }}
           ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
           MONGO_URI: ${{ secrets.MONGO_URI }}
           SESSION_JWT_SECRET: ${{ secrets.SESSION_JWT_SECRET }}
-          STAGE: ${{ secrets.STAGE }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           SERVERLESS_DEPLOYMENT_BUCKET: ${{ secrets.SERVERLESS_DEPLOYMENT_BUCKET }}
           S3_TEMP_BUCKET: ${{ secrets.S3_TEMP_BUCKET }}

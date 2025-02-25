@@ -32,7 +32,6 @@ const serverlessConfiguration: Serverless = {
       target: ['node20'],
       platform: 'node',
     } as BuildOptions,
-    'serverless-offline': {},
   },
   provider: {
     name: 'aws',
@@ -40,7 +39,7 @@ const serverlessConfiguration: Serverless = {
     memorySize: 128,
     timeout: 30,
     region: 'us-east-1',
-    stage: '${env:STAGE}',
+    stage: '${opt:stage}',
     deploymentBucket: {
       name: '${env:SERVERLESS_DEPLOYMENT_BUCKET}',
     },
@@ -54,12 +53,13 @@ const serverlessConfiguration: Serverless = {
       ENCRYPTION_IV: '${env:ENCRYPTION_IV}',
       ENCRYPTION_KEY: '${env:ENCRYPTION_KEY}',
       MONGO_URI: '${env:MONGO_URI}',
+      NODE_ENV: 'production',
       RESEND_API_KEY: '${env:RESEND_API_KEY}',
       S3_HOST: '${env:S3_HOST}',
       S3_TEMP_BUCKET: '${env:S3_TEMP_BUCKET}',
       S3_USER_UPLOAD: '${env:S3_USER_UPLOAD}',
       SESSION_JWT_SECRET: '${env:SESSION_JWT_SECRET}',
-      STAGE: '${env:STAGE}',
+      STAGE: '${opt:stage}',
       TZ: 'Asia/Kolkata',
     },
     apiGateway: {

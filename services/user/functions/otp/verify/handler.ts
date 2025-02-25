@@ -4,8 +4,76 @@ import { formatJSONResponse } from '@/lib/api-gateway';
 import { HttpException } from '@/lib/error';
 import { HttpStatusCode } from '@/types/http';
 import bcrypt from 'bcryptjs';
-import { Otp, OtpModel, UserModel } from '@/mongo';
+import { CompanyModel, Otp, OtpModel, UserModel } from '@/mongo';
 import { FilterQuery, Types } from 'mongoose';
+import { Product } from '@/common/const';
+import { CompanyService } from '@/services/company.service';
+import { ProductService } from '@/services/product.service';
+import { Session } from '@/types';
+import { setSessionCompanyId } from '@/services/session';
+
+async function registerVerifiedUser(otpDoc: Otp, session: Session) {
+  const companyName: string | null = otpDoc.meta.companyName || null;
+  const productId: Product | null = otpDoc.meta.productId || null;
+  const userId = otpDoc.userId;
+
+  let companyInfo;
+  let productInfo;
+
+  const user = await UserModel.findOneAndUpdate(
+    {
+      _id: userId,
+      status: 'UNVERIFIED',
+    },
+    {
+      $set: {
+        status: 'ACTIVE',
+      },
+    },
+  ).lean();
+
+  if (!user) {
+    return;
+  }
+
+  session.userId = userId.toString();
+
+  if (companyName) {
+    companyInfo = await CompanyModel.create({
+      companyName: companyName,
+      primaryUserId: userId,
+      status: 'ACTIVE',
+    });
+  }
+
+  if (productId && companyInfo) {
+    productInfo = await CompanyService.addProduct({
+      companyId: companyInfo._id.toString(),
+      productId: productId,
+      userId: userId.toString(),
+    });
+
+    await CompanyService.addProductPermissionToUser({
+      companyId: companyInfo._id.toString(),
+      userId: userId.toString(),
+      products: [productId],
+      role: 'SUPER_ADMIN',
+    });
+
+    await ProductService.populateDefaultAppData({
+      companyId: companyInfo._id.toString(),
+      companyName: companyInfo.companyName,
+      productId: productId,
+      userId: userId.toString(),
+    });
+
+    setSessionCompanyId(
+      session,
+      productInfo.productId,
+      companyInfo._id.toString(),
+    );
+  }
+}
 
 export const main = middyfy<typeof schema>(
   async (event) => {
@@ -69,6 +137,8 @@ export const main = middyfy<typeof schema>(
           },
         },
       );
+    } else if (otpDoc.flow === 'REGISTER') {
+      await registerVerifiedUser(otpDoc, session);
     }
 
     await OtpModel.deleteOne({

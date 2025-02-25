@@ -3,11 +3,10 @@ import schema from './schema';
 import { HttpException } from '@/lib/error';
 import { HttpStatusCode } from '@/types/http';
 import bcrypt from 'bcryptjs';
-import { setSessionCompanyId } from '@/services/session';
 import { formatJSONResponse } from '@/lib/api-gateway';
-import { CompanyModel, UserModel } from '@/mongo';
-import { CompanyService } from '@/services/company.service';
-import { ProductService } from '@/services/product.service';
+import { OtpModel, UserModel } from '@/mongo';
+import { generateOTP } from '@/utils/random';
+import { sendEmail } from '@/lib/email';
 
 export const main = middyfy<typeof schema>(
   async (event) => {
@@ -41,51 +40,52 @@ export const main = middyfy<typeof schema>(
       lastName: lastName,
       mobileNo: mobileNo,
       password: hash,
-      status: 'ACTIVE',
+      status: 'UNVERIFIED',
     });
-    session.userId = userInfo._id.toString();
 
-    // TODO : add email verification before creating company
-    let companyInfo;
-    let productInfo;
+    const otpDoc = await OtpModel.findOneAndUpdate(
+      {
+        flow: 'REGISTER',
+        userId: userInfo._id,
+      },
+      {
+        $setOnInsert: {
+          flow: 'REGISTER',
+          userId: userInfo._id,
+          createdAt: new Date(),
+        },
+        $set: {
+          otp: generateOTP(),
+          meta: {
+            emailId,
+            companyName,
+            productId,
+          },
+        },
+      },
+      {
+        new: true,
+        upsert: true,
+      },
+    ).lean();
 
-    if (companyName) {
-      companyInfo = await CompanyModel.create({
-        companyName: companyName,
-        primaryUserId: userInfo._id,
-        status: 'ACTIVE',
-      });
-    }
-
-    if (productId && companyInfo) {
-      productInfo = await CompanyService.addProduct({
-        companyId: companyInfo._id.toString(),
-        productId: productId,
-        userId: userInfo._id.toString(),
-      });
-
-      await CompanyService.addProductPermissionToUser({
-        companyId: companyInfo._id.toString(),
-        userId: userInfo._id.toString(),
-        products: [productId],
-        role: 'SUPER_ADMIN',
-      });
-
-      await ProductService.populateDefaultAppData({
-        companyId: companyInfo._id.toString(),
-        companyName: companyInfo.companyName,
-        productId: productId,
-        userId: userInfo._id.toString(),
-      });
-
-      setSessionCompanyId(
-        session,
-        productInfo.productId,
-        companyInfo._id.toString(),
-      );
-    }
+    session.otp = {
+      flow: 'REGISTER',
+      id: otpDoc._id.toString(),
+    };
 
     event.session = session;
+
+    await sendEmail({
+      template: {
+        eventData: {
+          otp: otpDoc.otp,
+        },
+        key: 'REGISTER',
+        userId: userInfo._id.toString(),
+      },
+      to: userInfo.emailId,
+    });
 
     return formatJSONResponse({
       isSuccess: true,

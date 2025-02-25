@@ -1,11 +1,10 @@
-import { MONGO_URI, STAGE } from '@/env';
+import { MONGO_URI } from '@/env';
 import mongoose from 'mongoose';
 
-if (['local', 'dev'].includes(STAGE)) {
-  mongoose.set('debug', true);
-}
+const isProd = process.env.NODE_ENV === 'production';
 
-mongoose.set('autoIndex', STAGE === 'local');
+mongoose.set('debug', !isProd);
+mongoose.set('autoIndex', !isProd);
 
 let connection: typeof mongoose | null = null;
 
