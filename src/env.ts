@@ -15,4 +15,8 @@ export const S3_USER_UPLOAD = process.env.S3_USER_UPLOAD as string;
 
 export const CAMPAIGN_APP_API_URI = process.env.CAMPAIGN_APP_API_URI as string;
 export const CAMPAIGN_APP_API_KEY = process.env.CAMPAIGN_APP_API_KEY as string;
+
+export const CHAT_APP_API_URI = process.env.CHAT_APP_API_URI as string;
+export const CHAT_APP_API_KEY = process.env.CHAT_APP_API_KEY as string;
+
 export const IS_OFFLINE = process.env.IS_OFFLINE === 'true';

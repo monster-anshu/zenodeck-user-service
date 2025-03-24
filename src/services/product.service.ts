@@ -1,12 +1,19 @@
 import { Product } from '@/common/const';
-import { CAMPAIGN_APP_API_KEY, CAMPAIGN_APP_API_URI } from '@/env';
+import {
+  CAMPAIGN_APP_API_KEY,
+  CAMPAIGN_APP_API_URI,
+  CHAT_APP_API_KEY,
+  CHAT_APP_API_URI,
+} from '@/env';
 
 const headers: Partial<Record<Product, object>> = {
   CAMPAIGN: { 'x-api-key': CAMPAIGN_APP_API_KEY },
+  CHAT_APP: { 'x-api-key': CHAT_APP_API_KEY },
 };
 
 const apiObj: Partial<Record<Product, string>> = {
   CAMPAIGN: CAMPAIGN_APP_API_URI + '/api/v1/campaign/internal/populate-default',
+  CHAT_APP: CHAT_APP_API_URI + '/api/v1/chat/internal/populate-default',
 };
 
 export class ProductService {

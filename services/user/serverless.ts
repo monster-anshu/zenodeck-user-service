@@ -50,6 +50,8 @@ const serverlessConfiguration: Serverless = {
       BASE_DOMAIN: '${env:BASE_DOMAIN}',
       CAMPAIGN_APP_API_KEY: '${env:CAMPAIGN_APP_API_KEY}',
       CAMPAIGN_APP_API_URI: '${env:CAMPAIGN_APP_API_URI}',
+      CHAT_APP_API_KEY: '${env:CHAT_APP_API_KEY}',
+      CHAT_APP_API_URI: '${env:CHAT_APP_API_URI}',
       ENCRYPTION_IV: '${env:ENCRYPTION_IV}',
       ENCRYPTION_KEY: '${env:ENCRYPTION_KEY}',
       MONGO_URI: '${env:MONGO_URI}',
