@@ -5,7 +5,7 @@ import { Session } from '@/types';
 const sessionCompanyKeyMap = {
   BOOKINGS: 'bookingsApp',
   PROJECTS: 'projectsApp',
-  CHAT_APP: 'chatApp',
+  CONNECT: 'connectApp',
   CAMPAIGN: 'campaignApp',
 } as const;
 

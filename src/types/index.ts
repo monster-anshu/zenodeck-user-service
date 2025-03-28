@@ -12,7 +12,7 @@ export type Session = {
   projectsApp?: {
     companyId?: string;
   };
-  chatApp?: {
+  connectApp?: {
     companyId: string;
   };
   otp?: {
