@@ -5,6 +5,11 @@ import {
   CONNECT_APP_API_KEY,
   CONNECT_APP_API_URI,
 } from '@/env';
+import { HttpException } from '@/lib/error';
+import { CompanyModel, CompanyProductModel } from '@/mongo';
+import { HttpStatusCode } from '@/types/http';
+import { Types } from 'mongoose';
+import { CompanyService } from './company.service';
 
 const headers: Partial<Record<Product, object>> = {
   CAMPAIGN: { 'x-api-key': CAMPAIGN_APP_API_KEY },
@@ -46,8 +51,50 @@ export class ProductService {
       }),
     });
 
-    const data = await res.json();
-
-    return data;
+    if (res.status !== 201) {
+      console.error(
+        'Response from product service',
+        res.status,
+        await res.text(),
+      );
+      throw new HttpException(
+        'UNABLE_TO_CREATE_PRODUCT',
+        HttpStatusCode.InternalServerError,
+      );
+    }
   };
+
+  static async revertOnPoplulateDataError(
+    {
+      companyId,
+      companyProductId,
+      productId,
+      userId,
+    }: {
+      companyId: Types.ObjectId;
+      companyProductId: Types.ObjectId;
+      productId: Product;
+      userId: Types.ObjectId;
+    },
+    {
+      removeCompany = false,
+    }: {
+      removeCompany?: boolean;
+    } = {},
+  ) {
+    if (removeCompany) {
+      await CompanyModel.deleteOne({ _id: companyId });
+    }
+    // revert changes from CompanyService.addProduct
+    await CompanyProductModel.deleteOne({
+      _id: companyProductId,
+      companyId: companyId,
+      productId: productId,
+    });
+    await CompanyService.removeProductPermissionFromUser({
+      companyId: companyId.toString(),
+      userId: userId.toString(),
+      products: [productId],
+    });
+  }
 }

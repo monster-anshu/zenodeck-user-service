@@ -50,6 +50,19 @@ export const main = middyfy<typeof schema>(async (event) => {
       companyName: companyInfo.companyName,
       productId: productId,
       userId: userId.toString(),
+    }).catch(async (err) => {
+      await ProductService.revertOnPoplulateDataError(
+        {
+          companyId: companyInfo._id,
+          companyProductId: productInfo._id,
+          productId: productId,
+          userId: new Types.ObjectId(userId),
+        },
+        {
+          removeCompany: false,
+        },
+      );
+      throw err;
     });
   }
 

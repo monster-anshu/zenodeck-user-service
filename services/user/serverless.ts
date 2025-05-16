@@ -55,7 +55,7 @@ const serverlessConfiguration: Serverless = {
       ENCRYPTION_IV: '${env:ENCRYPTION_IV}',
       ENCRYPTION_KEY: '${env:ENCRYPTION_KEY}',
       MONGO_URI: '${env:MONGO_URI}',
-      NODE_ENV: 'production',
+      NODE_ENV: '${env:NODE_ENV}',
       RESEND_API_KEY: '${env:RESEND_API_KEY}',
       S3_HOST: '${env:S3_HOST}',
       S3_TEMP_BUCKET: '${env:S3_TEMP_BUCKET}',

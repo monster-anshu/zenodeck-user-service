@@ -18,7 +18,6 @@ async function registerVerifiedUser(otpDoc: Otp, session: Session) {
   const userId = otpDoc.userId;
 
   let companyInfo;
-  let productInfo;
 
   const user = await UserModel.findOneAndUpdate(
     {
@@ -47,7 +46,7 @@ async function registerVerifiedUser(otpDoc: Otp, session: Session) {
   }
 
   if (productId && companyInfo) {
-    productInfo = await CompanyService.addProduct({
+    const productInfo = await CompanyService.addProduct({
       companyId: companyInfo._id.toString(),
       productId: productId,
       userId: userId.toString(),
@@ -65,6 +64,19 @@ async function registerVerifiedUser(otpDoc: Otp, session: Session) {
       companyName: companyInfo.companyName,
       productId: productId,
       userId: userId.toString(),
+    }).catch(async (err) => {
+      await ProductService.revertOnPoplulateDataError(
+        {
+          companyId: companyInfo._id,
+          companyProductId: productInfo._id,
+          productId: productId,
+          userId: new Types.ObjectId(userId),
+        },
+        {
+          removeCompany: true,
+        },
+      );
+      throw err;
     });
 
     setSessionCompanyId(

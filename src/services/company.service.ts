@@ -98,6 +98,35 @@ export class CompanyService {
     ).lean();
   }
 
+  static async removeProductPermissionFromUser({
+    companyId,
+    products,
+    userId,
+  }: {
+    userId: string;
+    companyId: string;
+    products: Product[];
+  }) {
+    const companyUser = await CompanyUserModel.findOneAndUpdate(
+      {
+        companyId,
+        userId,
+      },
+      {
+        $pull: {
+          products: { $in: products },
+        },
+      },
+      {
+        new: true,
+      },
+    ).lean();
+
+    if (companyUser && !companyUser.products.length) {
+      await CompanyUserModel.deleteOne({ _id: companyUser._id });
+    }
+  }
+
   static async addProduct({
     companyId,
     productId,
